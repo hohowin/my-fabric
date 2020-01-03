@@ -1,0 +1,56 @@
+{
+  "name": "@espresso/chaincode",
+  "version": "0.2.0",
+  "description": "Event Store Chaincode for Hyperledger Fabric",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "engines": {
+    "node": "^8.10.0",
+    "npm": ">=5"
+  },
+  "private": true,
+  "scripts": {
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "pretest": "npm run lint",
+    "start": "fabric-chaincode-node start",
+    "build": "rimraf dist && tsc",
+    "build:watch": "tsc -w",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "test:public-integration": "jest public.integration.test",
+    "test:public-unit": "jest public.unit.test",
+    "test:private": "jest private.integration.test",
+    "test:ngac-policy-engine-unit-test": "jest ngac.pe.unit.test",
+    "test:ngac-crud-unit-test": "jest ngac.crud.unit.test",
+    "test:ngac-consolidated-unit-test": "jest ngac.consolidated.unit.test",
+    "test:ngac-crud-integration-test": "jest ngac.crud.integration.test",
+    "test:policy.unit.test": "jest hasList.policy.unit.test"
+  },
+  "engineStrict": true,
+  "author": "Ross Tang",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@types/bytebuffer": "^5.0.40",
+    "bcrypt": "^3.0.7",
+    "child-process-promise": "^2.2.1",
+    "fabric-contract-api": "~1.4.2",
+    "fabric-shim": "~1.4.2",
+    "lodash": "^4.17.15",
+    "prettyjson": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/jest": "^24.0.18",
+    "@types/lodash": "^4.14.136",
+    "@types/node": "^8.10.54",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.7.2"
+  }
+}

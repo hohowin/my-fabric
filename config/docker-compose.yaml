@@ -1,0 +1,353 @@
+version: '2'
+
+networks:
+    myplatform:
+
+services:
+
+    tls-ca.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: ca
+        container_name: tls-ca.cbody.com
+        restart: always
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/tls-ca.cbody.com/server
+            - FABRIC_CA_SERVER_CSR_CN=tls-ca.cbody.com
+            - FABRIC_CA_SERVER_CA_NAME=tls-ca.cbody.com
+        ports:
+            - 6052:6052
+        command: sh -c 'fabric-ca-server start -d -b tls-ca-admin:tls-ca-adminPW --cfg.affiliations.allowremove --cfg.identities.allowremove --port 6052'
+        volumes:
+            - ../scripts/container:/setup
+            - ../artifacts:/var/artifacts
+
+    rca.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: ca
+        container_name: rca.cbody.com
+        restart: always
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/rca.cbody.com/server
+            - FABRIC_CA_SERVER_CSR_CN=rca.cbody.com
+            - FABRIC_CA_SERVER_CA_NAME=rca.cbody.com
+        ports:
+            - 6053:6053
+        command: sh -c 'fabric-ca-server start -d -b rca-hktfp-admin:rca-hktfp-adminPW --cfg.affiliations.allowremove --cfg.identities.allowremove --port 6053'
+        volumes:
+            - ../scripts/container:/setup
+            - ../artifacts:/var/artifacts
+
+    rca.pcch.net:
+        extends:
+            file: nodebase.yaml
+            service: ca
+        container_name: rca.pcch.net
+        restart: always
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/rca.pcch.net/server
+            - FABRIC_CA_SERVER_CSR_CN=rca.pcch.net
+            - FABRIC_CA_SERVER_CA_NAME=rca.pcch.net
+        ports:
+            - 6054:6054
+        command: sh -c 'fabric-ca-server start -d -b rca-pcch-admin:rca-pcch-adminPW --cfg.affiliations.allowremove  --cfg.identities.allowremove --port 6054'
+        volumes:
+            - ../scripts/container:/setup
+            - ../artifacts:/var/artifacts
+
+    rca.gov.hk:
+        extends:
+            file: nodebase.yaml
+            service: ca
+        container_name: rca.gov.hk
+        restart: always
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/rca.gov.hk/server
+            - FABRIC_CA_SERVER_CSR_CN=rca.gov.hk
+            - FABRIC_CA_SERVER_CA_NAME=rca.gov.hk
+        ports:
+            - 6055:6055
+        command: sh -c 'fabric-ca-server start -d -b rca-hkgov-admin:rca-hkgov-adminPW --cfg.affiliations.allowremove  --cfg.identities.allowremove --port 6055'
+        volumes:
+            - ../scripts/container:/setup
+            - ../artifacts:/var/artifacts
+
+    peer0.pcch.net:
+        extends:
+            file: nodebase.yaml
+            service: peer
+        container_name: peer0.pcch.net
+        environment:
+            - CORE_PEER_ID=peer0.pcch.net
+            - CORE_PEER_ADDRESS=peer0.pcch.net:7051
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+            - CORE_PEER_LOCALMSPID=PccHMSP
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/pcch.net/peer0/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/pcch.net/peer0/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/pcch.net/peer0/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/pcch.net/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.pcch.net:7151
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.pcch.net:7051
+            - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/pcch.net/peer0
+        volumes:
+            - /var/run:/host/var/run
+            - ../artifacts/production/pcch.net/peer0:/var/artifacts/production
+            - ../artifacts/crypto-config/pcch.net/peer0:/var/artifacts/crypto-config/pcch.net/peer0
+        ports:
+            - 7051:7051
+            - 7053:7053
+
+    peer1.pcch.net:
+        extends:
+            file: nodebase.yaml
+            service: peer
+        container_name: peer1.pcch.net
+        environment:
+            - CORE_PEER_ID=peer1.pcch.net
+            - CORE_PEER_ADDRESS=peer1.pcch.net:7151
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:7151
+            - CORE_PEER_LOCALMSPID=PccHMSP
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/pcch.net/peer1/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/pcch.net/peer1/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/pcch.net/peer1/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/pcch.net/peer1/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.pcch.net:7051
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.pcch.net:7151
+            - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7152
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/pcch.net/peer1
+        volumes:
+            - /var/run:/host/var/run
+            - ../artifacts/production/pcch.net/peer1:/var/artifacts/production
+            - ../artifacts/crypto-config/pcch.net/peer1:/var/artifacts/crypto-config/pcch.net/peer1
+        ports:
+            - 7151:7151
+            - 7153:7153
+
+    peer0.gov.hk:
+        extends:
+            file: nodebase.yaml
+            service: peer
+        container_name: peer0.gov.hk
+        environment:
+            - CORE_PEER_ID=peer0.gov.hk
+            - CORE_PEER_ADDRESS=peer0.gov.hk:7251
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:7251
+            - CORE_PEER_LOCALMSPID=HKGovMSP
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/gov.hk/peer0/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/gov.hk/peer0/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/gov.hk/peer0/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/gov.hk/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.gov.hk:7351
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.gov.hk:7251
+            - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7252
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/gov.hk/peer0
+        volumes:
+            - /var/run:/host/var/run
+            - ../artifacts/production/gov.hk/peer0:/var/artifacts/production
+            - ../artifacts/crypto-config/gov.hk/peer0:/var/artifacts/crypto-config/gov.hk/peer0
+        ports:
+            - 7251:7251
+            - 7253:7253
+
+    peer1.gov.hk:
+        extends:
+            file: nodebase.yaml
+            service: peer
+        container_name: peer1.gov.hk
+        environment:
+            - CORE_PEER_ID=peer1.gov.hk
+            - CORE_PEER_ADDRESS=peer1.gov.hk:7351
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:7351
+            - CORE_PEER_LOCALMSPID=HKGovMSP
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/gov.hk/peer1/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/gov.hk/peer1/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/gov.hk/peer1/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/gov.hk/peer1/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.gov.hk:7251
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.gov.hk:7351
+            - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7352
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/gov.hk/peer1
+        volumes:
+            - /var/run:/host/var/run
+            - ../artifacts/production/gov.hk/peer1:/var/artifacts/production
+            - ../artifacts/crypto-config/gov.hk/peer1:/var/artifacts/crypto-config/gov.hk/peer1
+        ports:
+            - 7351:7351
+            - 7353:7353
+
+    orderer0.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer0.cbody.com
+        environment:
+            - ORDERER_HOST=orderer0.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer0/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer0/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7050
+        volumes:
+            - ../artifacts/production/cbody.com/orderer0:/var/artifacts/production
+            - ../artifacts/crypto-config/cbody.com/orderer0:/var/artifacts/crypto-config/cbody.com/orderer0
+        ports:
+            - 7050:7050
+
+    orderer1.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer1.cbody.com
+        environment:
+            - ORDERER_HOST=orderer1.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer1/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer1/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7150
+        volumes:
+            - ../artifacts/production/cbody.com/orderer1:/var/artifacts/production
+            - ../artifacts/crypto-config/cbody.com/orderer1:/var/artifacts/crypto-config/cbody.com/orderer1
+        ports:
+            - 7150:7150
+
+    orderer2.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer2.cbody.com
+        environment:
+            - ORDERER_HOST=orderer2.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer2/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer2/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7250
+        volumes:
+            - ../artifacts/production/cbody.com/orderer2:/var/artifacts/production
+            - ../artifacts/crypto-config/cbody.com/orderer2:/var/artifacts/crypto-config/cbody.com/orderer2
+        ports:
+            - 7250:7250
+
+    orderer3.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer3.cbody.com
+        environment:
+            - ORDERER_HOST=orderer3.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer3/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer3/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7350
+        volumes:
+            - ../artifacts/production/cbody.com/orderer3:/var/artifacts/production
+            - ../artifacts/crypto-config/cbody.com/orderer3:/var/artifacts/crypto-config/cbody.com/orderer3
+        ports:
+            - 7350:7350
+
+    orderer4.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer4.cbody.com
+        environment:
+            - ORDERER_HOST=orderer4.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer4/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer4/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7450
+        volumes:
+            - ../artifacts/production/cbody.com/orderer4:/var/artifacts/production
+            - ../artifacts/crypto-config/cbody.com/orderer4:/var/artifacts/crypto-config/cbody.com/orderer4
+        ports:
+            - 7450:7450
+
+    cli.pcch.net:
+        extends:
+            file: nodebase.yaml
+            service: cli
+        container_name: cli.pcch.net
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - CORE_PEER_ID=cli.pcch.net
+            - CORE_PEER_ADDRESS=peer0.pcch.net:7051
+            - CORE_PEER_LOCALMSPID=PccHMSP
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/pcch.net/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/pcch.net/peer0/msp
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/pcch.net
+        command: sh
+        volumes:
+            - ../artifacts:/var/artifacts
+            - ../scripts/container:/setup
+            - ../chaincode:/opt/gopath/src/github.com/hyperledger/fabric/chaincode
+
+    cli.gov.hk:
+        extends:
+            file: nodebase.yaml
+            service: cli
+        container_name: cli.gov.hk
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - CORE_PEER_ID=cli.gov.hk
+            - CORE_PEER_ADDRESS=peer0.gov.hk:7251
+            - CORE_PEER_LOCALMSPID=HKGovMSP
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/gov.hk/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/gov.hk/peer0/msp
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/gov.hk
+        command: sh
+        volumes:
+            - ../artifacts:/var/artifacts
+            - ../scripts/container:/setup
+            - ../chaincode:/opt/gopath/src/github.com/hyperledger/fabric/chaincode
+
+    cadvisor:
+        container_name: cadvisor
+        image: google/cadvisor
+        restart: always
+        volumes:
+            - /:/rootfs:ro
+            - /var/run:/var/run:ro
+            - /sys:/sys:ro
+            - /var/lib/docker/:/var/lib/docker:ro
+            - /dev/disk/:/dev/disk:ro
+        ports:
+            - 8080:8080
