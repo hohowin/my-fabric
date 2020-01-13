@@ -12,7 +12,7 @@ fabric-ca-client register -d --id.name orderer1.cbody.com --id.secret ordererPW 
 fabric-ca-client register -d --id.name orderer2.cbody.com --id.secret ordererPW --id.type orderer -u https://0.0.0.0:6053
 fabric-ca-client register -d --id.name orderer3.cbody.com --id.secret ordererPW --id.type orderer -u https://0.0.0.0:6053
 fabric-ca-client register -d --id.name orderer4.cbody.com --id.secret ordererPW --id.type orderer -u https://0.0.0.0:6053
-fabric-ca-client register -d --id.name admin-cbody.com --id.secret CBodyAdminPW --id.type admin --id.attrs "hf.Registrar.Roles=client,hf.Registrar.Attributes=*,hf.Revoker=true,hf.GenCRL=true,admin=true:ecert,abac.init=true:ecert" -u https://0.0.0.0:6053
+fabric-ca-client register -d --id.name admin-cbody.com --id.secret CBodyAdminPW --id.type admin --id.attrs "hf.Registrar.Attributes=*,hf.Revoker=true,hf.GenCRL=true,admin=true:ecert,abac.init=true:ecert" -u https://0.0.0.0:6053
 
 # Copy Trusted Root Cert of CBody orderer0
 mkdir -p /var/artifacts/crypto-config/cbody.com/orderer0/assets/ca

@@ -9,8 +9,7 @@ fabric-ca-client enroll -d -u https://rca-pcch-admin:rca-pcch-adminPW@0.0.0.0:60
 
 fabric-ca-client register -d --id.name peer0.pcch.net --id.secret peer0PW --id.type peer -u https://0.0.0.0:6054
 fabric-ca-client register -d --id.name peer1.pcch.net --id.secret peer1PW --id.type peer -u https://0.0.0.0:6054
-fabric-ca-client register -d --id.name admin-pcch.net --id.secret PccHAdminPW --id.type user -u https://0.0.0.0:6054
-fabric-ca-client register -d --id.name user-pcch.net --id.secret PccHUserPW --id.type user -u https://0.0.0.0:6054
+fabric-ca-client register -d --id.name admin-pcch.net --id.secret PccHAdminPW --id.type admin --id.attrs "hf.Registrar.Attributes=*,hf.Revoker=true,hf.GenCRL=true,admin=true:ecert,abac.init=true:ecert" -u https://0.0.0.0:6054
 
 # Copy Trusted Root Cert of PccH to peer0
 mkdir -p /var/artifacts/crypto-config/pcch.net/peer0/assets/ca

@@ -8,8 +8,7 @@ export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/gov.hk/ca/admin
 fabric-ca-client enroll -d -u https://rca-hkgov-admin:rca-hkgov-adminPW@0.0.0.0:6055
 fabric-ca-client register -d --id.name peer0.gov.hk --id.secret peer0PW --id.type peer -u https://0.0.0.0:6055
 fabric-ca-client register -d --id.name peer1.gov.hk --id.secret peer1PW --id.type peer -u https://0.0.0.0:6055
-fabric-ca-client register -d --id.name admin-gov.hk --id.secret HKGovAdminPW --id.type user -u https://0.0.0.0:6055
-fabric-ca-client register -d --id.name user-gov.hk --id.secret HKGovUserPW --id.type user -u https://0.0.0.0:6055
+fabric-ca-client register -d --id.name admin-gov.hk --id.secret HKGovAdminPW --id.type admin --id.attrs "hf.Registrar.Attributes=*,hf.Revoker=true,hf.GenCRL=true,admin=true:ecert,abac.init=true:ecert" -u https://0.0.0.0:6055
 
 # Copy Trusted Root Cert of HKGov to peer0
 mkdir -p /var/artifacts/crypto-config/gov.hk/peer0/assets/ca
