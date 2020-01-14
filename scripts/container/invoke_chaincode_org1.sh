@@ -1,9 +1,9 @@
 
-export CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/pcch.net/admin/msp
+export CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/PccHMSP/admin/msp
 export CORE_PEER_ADDRESS=peer0.pcch.net:7051
 export ORDERER_URL=orderer0.cbody.com:7050
 export CHANNEL=genericchannel
-export CA_FILE=/var/artifacts/crypto-config/pcch.net/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+export CA_FILE=/var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
 # Invoke event store
 peer chaincode invoke -o ${ORDERER_URL} -C ${CHANNEL} -n eventstore --waitForEvent \

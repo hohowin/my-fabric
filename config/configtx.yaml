@@ -280,24 +280,24 @@ Orderer: &OrdererDefaults
       Consenters:
          - Host: orderer0.cbody.com
            Port: 7050
-           ClientTLSCert: ../artifacts/crypto-config/cbody.com/orderer0/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/cbody.com/orderer0/tls-msp/signcerts/cert.pem
+           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
          - Host: orderer1.cbody.com
            Port: 7150
-           ClientTLSCert: ../artifacts/crypto-config/cbody.com/orderer1/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/cbody.com/orderer1/tls-msp/signcerts/cert.pem
+           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
          - Host: orderer2.cbody.com
            Port: 7250
-           ClientTLSCert: ../artifacts/crypto-config/cbody.com/orderer2/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/cbody.com/orderer2/tls-msp/signcerts/cert.pem
+           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
          - Host: orderer3.cbody.com
            Port: 7350
-           ClientTLSCert: ../artifacts/crypto-config/cbody.com/orderer3/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/cbody.com/orderer3/tls-msp/signcerts/cert.pem
+           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
          - Host: orderer4.cbody.com
            Port: 7450
-           ClientTLSCert: ../artifacts/crypto-config/cbody.com/orderer4/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/cbody.com/orderer4/tls-msp/signcerts/cert.pem
+           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
 
       # Options to be specified for all the etcd/raft nodes. The values here
       # are the defaults for all new channels and can be modified on a

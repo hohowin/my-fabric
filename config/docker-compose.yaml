@@ -87,18 +87,18 @@ services:
             - CORE_PEER_ADDRESS=peer0.pcch.net:7051
             - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
             - CORE_PEER_LOCALMSPID=PccHMSP
-            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/pcch.net/peer0/msp
-            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/pcch.net/peer0/tls-msp/signcerts/cert.pem
-            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/pcch.net/peer0/tls-msp/keystore/key.pem
-            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/pcch.net/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
             - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.pcch.net:7151
             - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.pcch.net:7051
             - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/pcch.net/peer0
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/PccHMSP/peer0.pcch.net
         volumes:
             - /var/run:/host/var/run
-            - ../artifacts/production/pcch.net/peer0:/var/artifacts/production
-            - ../artifacts/crypto-config/pcch.net/peer0:/var/artifacts/crypto-config/pcch.net/peer0
+            - ../artifacts/production/PccHMSP/peer0.pcch.net:/var/artifacts/production
+            - ../artifacts/crypto-config/PccHMSP/peer0.pcch.net:/var/artifacts/crypto-config/PccHMSP/peer0.pcch.net
         ports:
             - 7051:7051
             - 7053:7053
@@ -113,18 +113,18 @@ services:
             - CORE_PEER_ADDRESS=peer1.pcch.net:7151
             - CORE_PEER_LISTENADDRESS=0.0.0.0:7151
             - CORE_PEER_LOCALMSPID=PccHMSP
-            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/pcch.net/peer1/msp
-            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/pcch.net/peer1/tls-msp/signcerts/cert.pem
-            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/pcch.net/peer1/tls-msp/keystore/key.pem
-            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/pcch.net/peer1/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
             - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.pcch.net:7051
             - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.pcch.net:7151
             - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7152
-        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/pcch.net/peer1
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/PccHMSP/peer1.pcch.net
         volumes:
             - /var/run:/host/var/run
-            - ../artifacts/production/pcch.net/peer1:/var/artifacts/production
-            - ../artifacts/crypto-config/pcch.net/peer1:/var/artifacts/crypto-config/pcch.net/peer1
+            - ../artifacts/production/PccHMSP/peer1.pcch.net:/var/artifacts/production
+            - ../artifacts/crypto-config/PccHMSP/peer1.pcch.net:/var/artifacts/crypto-config/PccHMSP/peer1.pcch.net
         ports:
             - 7151:7151
             - 7153:7153
@@ -139,18 +139,18 @@ services:
             - CORE_PEER_ADDRESS=peer0.gov.hk:7251
             - CORE_PEER_LISTENADDRESS=0.0.0.0:7251
             - CORE_PEER_LOCALMSPID=HKGovMSP
-            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/gov.hk/peer0/msp
-            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/gov.hk/peer0/tls-msp/signcerts/cert.pem
-            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/gov.hk/peer0/tls-msp/keystore/key.pem
-            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/gov.hk/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
             - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.gov.hk:7351
             - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.gov.hk:7251
             - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7252
-        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/gov.hk/peer0
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/HKGovMSP/peer0.gov.hk
         volumes:
             - /var/run:/host/var/run
-            - ../artifacts/production/gov.hk/peer0:/var/artifacts/production
-            - ../artifacts/crypto-config/gov.hk/peer0:/var/artifacts/crypto-config/gov.hk/peer0
+            - ../artifacts/production/HKGovMSP/peer0.gov.hk:/var/artifacts/production
+            - ../artifacts/crypto-config/HKGovMSP/peer0.gov.hk:/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk
         ports:
             - 7251:7251
             - 7253:7253
@@ -165,18 +165,18 @@ services:
             - CORE_PEER_ADDRESS=peer1.gov.hk:7351
             - CORE_PEER_LISTENADDRESS=0.0.0.0:7351
             - CORE_PEER_LOCALMSPID=HKGovMSP
-            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/gov.hk/peer1/msp
-            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/gov.hk/peer1/tls-msp/signcerts/cert.pem
-            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/gov.hk/peer1/tls-msp/keystore/key.pem
-            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/gov.hk/peer1/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
             - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.gov.hk:7251
             - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.gov.hk:7351
             - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7352
-        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/gov.hk/peer1
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/HKGovMSP/peer1.gov.hk
         volumes:
             - /var/run:/host/var/run
-            - ../artifacts/production/gov.hk/peer1:/var/artifacts/production
-            - ../artifacts/crypto-config/gov.hk/peer1:/var/artifacts/crypto-config/gov.hk/peer1
+            - ../artifacts/production/HKGovMSP/peer1.gov.hk:/var/artifacts/production
+            - ../artifacts/crypto-config/HKGovMSP/peer1.gov.hk:/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk
         ports:
             - 7351:7351
             - 7353:7353
@@ -190,18 +190,18 @@ services:
             - ORDERER_HOST=orderer0.cbody.com
             - ORDERER_HOME=/var/artifacts/orderer
             - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
-            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer0/msp
-            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
-            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer0/genesis.block
-            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
             - ORDERER_GENERAL_LISTENPORT=7050
         volumes:
-            - ../artifacts/production/cbody.com/orderer0:/var/artifacts/production
-            - ../artifacts/crypto-config/cbody.com/orderer0:/var/artifacts/crypto-config/cbody.com/orderer0
+            - ../artifacts/production/CBodyMSP/orderer0.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer0.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com
         ports:
             - 7050:7050
 
@@ -214,18 +214,18 @@ services:
             - ORDERER_HOST=orderer1.cbody.com
             - ORDERER_HOME=/var/artifacts/orderer
             - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
-            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer1/msp
-            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
-            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer1/genesis.block
-            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer1/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
             - ORDERER_GENERAL_LISTENPORT=7150
         volumes:
-            - ../artifacts/production/cbody.com/orderer1:/var/artifacts/production
-            - ../artifacts/crypto-config/cbody.com/orderer1:/var/artifacts/crypto-config/cbody.com/orderer1
+            - ../artifacts/production/CBodyMSP/orderer1.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer1.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com
         ports:
             - 7150:7150
 
@@ -238,18 +238,18 @@ services:
             - ORDERER_HOST=orderer2.cbody.com
             - ORDERER_HOME=/var/artifacts/orderer
             - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
-            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer2/msp
-            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
-            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer2/genesis.block
-            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer2/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
             - ORDERER_GENERAL_LISTENPORT=7250
         volumes:
-            - ../artifacts/production/cbody.com/orderer2:/var/artifacts/production
-            - ../artifacts/crypto-config/cbody.com/orderer2:/var/artifacts/crypto-config/cbody.com/orderer2
+            - ../artifacts/production/CBodyMSP/orderer2.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer2.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com
         ports:
             - 7250:7250
 
@@ -262,18 +262,18 @@ services:
             - ORDERER_HOST=orderer3.cbody.com
             - ORDERER_HOME=/var/artifacts/orderer
             - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
-            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer3/msp
-            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
-            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer3/genesis.block
-            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer3/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
             - ORDERER_GENERAL_LISTENPORT=7350
         volumes:
-            - ../artifacts/production/cbody.com/orderer3:/var/artifacts/production
-            - ../artifacts/crypto-config/cbody.com/orderer3:/var/artifacts/crypto-config/cbody.com/orderer3
+            - ../artifacts/production/CBodyMSP/orderer3.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer3.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com
         ports:
             - 7350:7350
 
@@ -286,18 +286,18 @@ services:
             - ORDERER_HOST=orderer4.cbody.com
             - ORDERER_HOME=/var/artifacts/orderer
             - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
-            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/cbody.com/orderer4/msp
-            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
-            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/cbody.com/orderer4/genesis.block
-            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/signcerts/cert.pem
-            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/keystore/key.pem
-            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/cbody.com/orderer4/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
             - ORDERER_GENERAL_LISTENPORT=7450
         volumes:
-            - ../artifacts/production/cbody.com/orderer4:/var/artifacts/production
-            - ../artifacts/crypto-config/cbody.com/orderer4:/var/artifacts/crypto-config/cbody.com/orderer4
+            - ../artifacts/production/CBodyMSP/orderer4.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer4.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com
         ports:
             - 7450:7450
 
@@ -311,8 +311,8 @@ services:
             - CORE_PEER_ID=cli.pcch.net
             - CORE_PEER_ADDRESS=peer0.pcch.net:7051
             - CORE_PEER_LOCALMSPID=PccHMSP
-            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/pcch.net/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
-            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/pcch.net/peer0/msp
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/msp
         working_dir: /opt/gopath/src/github.com/hyperledger/fabric/pcch.net
         command: sh
         volumes:
@@ -330,8 +330,8 @@ services:
             - CORE_PEER_ID=cli.gov.hk
             - CORE_PEER_ADDRESS=peer0.gov.hk:7251
             - CORE_PEER_LOCALMSPID=HKGovMSP
-            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/gov.hk/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
-            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/gov.hk/peer0/msp
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/msp
         working_dir: /opt/gopath/src/github.com/hyperledger/fabric/gov.hk
         command: sh
         volumes:

@@ -24,7 +24,7 @@ fabric-ca-client enroll -d -u https://{{-}}{{network.host-delimiter}}{{orgs.peer
 {{/orgs.peer.1.peers.endpoints}}
 # Enroll {{orgs.peer.1.name}}'s Admin
 export FABRIC_CA_CLIENT_HOME={{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.peer.1.admin-cert-path}}}
-export FABRIC_CA_CLIENT_TLS_CERTFILES={{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{orgs.peer.1.domain}}/{{orgs.peer.1.peers.endpoints.0.-}}/assets/ca/{{orgs.peer.1.domain}}-ca-cert.pem
+export FABRIC_CA_CLIENT_TLS_CERTFILES={{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{orgs.peer.1.peers.endpoints.0.cert-path}}/assets/ca/{{orgs.peer.1.domain}}-ca-cert.pem
 export FABRIC_CA_CLIENT_MSPDIR=msp
 fabric-ca-client enroll -d -u https://admin-{{orgs.peer.1.domain}}:{{orgs.peer.1.name}}AdminPW@0.0.0.0:{{orgs.peer.1.ca.port}}
 
