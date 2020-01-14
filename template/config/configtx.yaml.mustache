@@ -255,8 +255,8 @@ Orderer: &OrdererDefaults
          {{#orgs.orderer.orderers.endpoints}}
          - Host: {{-}}{{network.host-delimiter}}{{orgs.orderer.domain}}
            Port: {{ext-port}}
-           ClientTLSCert: {{{artifacts.local}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{orgs.orderer.domain}}/{{-}}/tls-msp/signcerts/cert.pem
-           ServerTLSCert: {{{artifacts.local}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{orgs.orderer.domain}}/{{-}}/tls-msp/signcerts/cert.pem
+           ClientTLSCert: {{{artifacts.local}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/tls-msp/signcerts/cert.pem
+           ServerTLSCert: {{{artifacts.local}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/tls-msp/signcerts/cert.pem
          {{/orgs.orderer.orderers.endpoints}}
 
       # Options to be specified for all the etcd/raft nodes. The values here

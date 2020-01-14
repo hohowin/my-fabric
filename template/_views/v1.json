@@ -30,13 +30,16 @@
                 "host": "ca",
                 "port": "6052",
                 "admin": "tls-ca-admin",
-                "adminpw": "tls-ca-adminPW"
+                "adminpw": "tls-ca-adminPW",
+                "admin-cert-path": "ca-tls/admin"
             }
         },
         "orderer": {
             "name": "org0",
             "id": "org0MSP",
             "domain": "org0",
+            "admin-cert-path": "org0/admin",
+            "ca-server-cert-path": "org0/ca/crypto",
             "orderers": {
                 "type": "etcdraft",
                 "use-kafka": false,
@@ -104,7 +107,8 @@
                 "host": "rca",
                 "port": "6053",
                 "admin": "rca-org0-admin",
-                "adminpw": "rca-org0-adminPW"
+                "adminpw": "rca-org0-adminPW",
+                "admin-cert-path": "org0/ca/admin"
             }
         },
         "peer": [
@@ -113,6 +117,8 @@
                 "script-naming": "org1",
                 "id": "org1MSP",
                 "domain": "org1",
+                "admin-cert-path": "org1/admin",
+                "ca-server-cert-path": "org1/ca/crypto",
                 "peers": {
                     "anchor": "peer1",
                     "anchor-port": "7051",
@@ -138,7 +144,8 @@
                     "host": "rca",
                     "port": "6054",
                     "admin": "rca-org1-admin",
-                    "adminpw": "rca-org1-adminPW"
+                    "adminpw": "rca-org1-adminPW",
+                    "admin-cert-path": "org1/ca/admin"
                 }
             },
             {
@@ -146,6 +153,8 @@
                 "script-naming": "org2",
                 "id": "org2MSP",
                 "domain": "org2",
+                "admin-cert-path": "org2/admin",
+                "ca-server-cert-path": "org2/ca/crypto",
                 "peers": {
                     "anchor": "peer1",
                     "anchor-port": "7251",
@@ -171,7 +180,8 @@
                     "host": "rca",
                     "port": "6055",
                     "admin": "rca-org2-admin",
-                    "adminpw": "rca-org2-adminPW"
+                    "adminpw": "rca-org2-adminPW",
+                    "admin-cert-path": "org2/ca/admin"
                 }
             }
         ]

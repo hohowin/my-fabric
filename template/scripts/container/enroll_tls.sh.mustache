@@ -1,7 +1,7 @@
 
 # Enroll {{orgs.tls.ca.host}}{{network.host-delimiter}}{{orgs.tls.domain}}'s Admin
 export FABRIC_CA_CLIENT_TLS_CERTFILES={{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{orgs.tls.ca.host}}{{network.host-delimiter}}{{orgs.tls.domain}}/{{{artifacts.caserver-home}}}{{#artifacts.caserver-home}}/{{/artifacts.caserver-home}}ca-cert.pem
-export FABRIC_CA_CLIENT_HOME={{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.tls.admin-cert-path}}}
+export FABRIC_CA_CLIENT_HOME={{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.tls.ca.admin-cert-path}}}
 
 fabric-ca-client enroll -d -u https://{{orgs.tls.ca.admin}}:{{orgs.tls.ca.adminpw}}@0.0.0.0:{{orgs.tls.ca.port}}
 {{#orgs.peer}}
@@ -21,7 +21,7 @@ fabric-ca-client register -d --id.name {{-}}{{network.host-delimiter}}{{orgs.ord
 
 # Copy certificate of the TLS CA for {{name}} {{-}}
 mkdir -p {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/assets/tls-ca
-cp {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.tls.admin-cert-path}}}/msp/cacerts/0-0-0-0-{{orgs.tls.ca.port}}.pem {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/assets/tls-ca/tls-ca-cert.pem
+cp {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.tls.ca.admin-cert-path}}}/msp/cacerts/0-0-0-0-{{orgs.tls.ca.port}}.pem {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll {{name}} {{-}}
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
@@ -41,7 +41,7 @@ mv {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifac
 {{#orgs.orderer.orderers.endpoints}}
 # Copy certificate of {{orgs.tls.ca.host}}{{network.host-delimiter}}{{orgs.tls.domain}} for {{orgs.orderer.name}} {{-}}
 mkdir -p {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/assets/tls-ca
-cp {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.tls.admin-cert-path}}}/msp/cacerts/0-0-0-0-{{orgs.tls.ca.port}}.pem {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/assets/tls-ca/tls-ca-cert.pem
+cp {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.tls.ca.admin-cert-path}}}/msp/cacerts/0-0-0-0-{{orgs.tls.ca.port}}.pem {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll for {{orgs.orderer.name}} {{-}}
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp

@@ -25,18 +25,20 @@
     "orgs": {
         "tls": {
             "domain": "cbody.com",
-            "admin-cert-path": "tls-ca.cbody.com/admin",
             "ca": {
                 "host": "tls-ca",
                 "port": "6052",
                 "admin": "tls-ca-admin",
-                "adminpw": "tls-ca-adminPW"
+                "adminpw": "tls-ca-adminPW",
+                "admin-cert-path": "tls-ca.cbody.com/admin"
             }
         },
         "orderer": {
             "name": "CBody",
             "id": "CBodyMSP",
             "domain": "cbody.com",
+            "admin-cert-path": "cbody.com/admin",
+            "ca-server-cert-path": "cbody.com/ca/crypto",
             "orderers": {
                 "type": "etcdraft",
                 "use-kafka": false,
@@ -104,7 +106,8 @@
                 "host": "rca",
                 "port": "6053",
                 "admin": "rca-hktfp-admin",
-                "adminpw": "rca-hktfp-adminPW"
+                "adminpw": "rca-hktfp-adminPW",
+                "admin-cert-path": "cbody.com/ca/admin"
             }
         },
         "peer": [
@@ -113,6 +116,8 @@
                 "script-naming": "org1",
                 "id": "PccHMSP",
                 "domain": "pcch.net",
+                "admin-cert-path": "pcch.net/admin",
+                "ca-server-cert-path": "pcch.net/ca/crypto",
                 "peers": {
                     "anchor": "peer0",
                     "anchor-port": "7051",
@@ -138,7 +143,8 @@
                     "host": "rca",
                     "port": "6054",
                     "admin": "rca-pcch-admin",
-                    "adminpw": "rca-pcch-adminPW"
+                    "adminpw": "rca-pcch-adminPW",
+                    "admin-cert-path": "pcch.net/ca/admin"
                 }
             },
             {
@@ -146,6 +152,8 @@
                 "script-naming": "org2",
                 "id": "HKGovMSP",
                 "domain": "gov.hk",
+                "admin-cert-path": "gov.hk/admin",
+                "ca-server-cert-path": "gov.hk/ca/crypto",
                 "peers": {
                     "anchor": "peer0",
                     "anchor-port": "7251",
@@ -171,7 +179,8 @@
                     "host": "rca",
                     "port": "6055",
                     "admin": "rca-hkgov-admin",
-                    "adminpw": "rca-hkgov-adminPW"
+                    "adminpw": "rca-hkgov-adminPW",
+                    "admin-cert-path": "gov.hk/ca/admin"
                 }
             }
         ]

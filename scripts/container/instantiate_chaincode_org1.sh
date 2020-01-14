@@ -12,4 +12,3 @@ peer chaincode instantiate -o orderer0.cbody.com:7050 -C genericchannel -n priva
     -c '{"Args":["privatedata:instantiate"]}' -P "OR ('PccHMSP.member', 'HKGovMSP.member')" \
     --collections-config /opt/gopath/src/github.com/hyperledger/fabric/chaincode/op/collections.json \
     --tls --cafile /var/artifacts/crypto-config/pcch.net/peer0/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
-
