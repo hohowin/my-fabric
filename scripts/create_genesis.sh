@@ -32,7 +32,11 @@ sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/assets/ca/gov.hk-ca-cert.pe
 sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/tlscacerts
 
 # Ubuntu requires ownership of orderer certs
-sudo chown -R $(whoami) ${_CRYPTO_CONFIG_DIR}/cbody.com
+sudo chown -R $(whoami) ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer0.cbody.com
+sudo chown -R $(whoami) ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer1.cbody.com
+sudo chown -R $(whoami) ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer2.cbody.com
+sudo chown -R $(whoami) ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer3.cbody.com
+sudo chown -R $(whoami) ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer4.cbody.com
 
 cd ${_FABRIC_DIR}; 
 export FABRIC_CFG_PATH=${PWD}
