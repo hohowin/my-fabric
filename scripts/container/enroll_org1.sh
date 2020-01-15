@@ -1,6 +1,6 @@
 # Copy TLS Cert
 mkdir -p /var/artifacts/crypto-config/PccHMSP/ca/crypto
-cp /var/artifacts/crypto-config/rca.pcch.net/server/ca-cert.pem /var/artifacts/crypto-config/PccHMSP/ca/crypto
+cp /var/artifacts/crypto-config/PccHMSP/ca/server/ca-cert.pem /var/artifacts/crypto-config/PccHMSP/ca/crypto
 
 # Register and Enroll
 export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/PccHMSP/ca/crypto/ca-cert.pem

@@ -1,6 +1,6 @@
 # Copy TLS Cert
 mkdir -p /var/artifacts/crypto-config/HKGovMSP/ca/crypto
-cp /var/artifacts/crypto-config/rca.gov.hk/server/ca-cert.pem /var/artifacts/crypto-config/HKGovMSP/ca/crypto
+cp /var/artifacts/crypto-config/HKGovMSP/ca/server/ca-cert.pem /var/artifacts/crypto-config/HKGovMSP/ca/crypto
 
 # Register and Enroll
 export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/HKGovMSP/ca/crypto/ca-cert.pem

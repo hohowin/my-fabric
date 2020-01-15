@@ -2,34 +2,34 @@
 . `pwd`/common.sh
 
 # CBody
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/cbody.com/msp/admincerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/cbody.com/msp/cacerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/cbody.com/msp/tlscacerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/cbody.com/msp/users
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/CBodyMSP/msp/admincerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/CBodyMSP/msp/cacerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/CBodyMSP/msp/tlscacerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/CBodyMSP/msp/users
 
-sudo cp  ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer0.cbody.com/msp/admincerts/cbody.com-admin-cert.pem  ${_CRYPTO_CONFIG_DIR}/cbody.com/msp/admincerts
-sudo cp  ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer0.cbody.com/assets/ca/cbody.com-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/cbody.com/msp/cacerts
-sudo cp  ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer0.cbody.com/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/cbody.com/msp/tlscacerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer0.cbody.com/msp/admincerts/cbody.com-admin-cert.pem  ${_CRYPTO_CONFIG_DIR}/CBodyMSP/msp/admincerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer0.cbody.com/assets/ca/cbody.com-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/CBodyMSP/msp/cacerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer0.cbody.com/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/CBodyMSP/msp/tlscacerts
 
 # PccH
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/pcch.net/msp/admincerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/pcch.net/msp/cacerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/pcch.net/msp/tlscacerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/pcch.net/msp/users
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/PccHMSP/msp/admincerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/PccHMSP/msp/cacerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/PccHMSP/msp/tlscacerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/PccHMSP/msp/users
 
-sudo cp  ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/msp/admincerts/pcch.net-admin-cert.pem  ${_CRYPTO_CONFIG_DIR}/pcch.net/msp/admincerts
-sudo cp  ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/assets/ca/pcch.net-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/pcch.net/msp/cacerts
-sudo cp  ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/pcch.net/msp/tlscacerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/msp/admincerts/pcch.net-admin-cert.pem  ${_CRYPTO_CONFIG_DIR}/PccHMSP/msp/admincerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/assets/ca/pcch.net-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/PccHMSP/msp/cacerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/PccHMSP/msp/tlscacerts
 
 # HKGov
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/gov.hk/msp/admincerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/gov.hk/msp/cacerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/gov.hk/msp/tlscacerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/gov.hk/msp/users
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/admincerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/cacerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/tlscacerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/users
 
-sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/msp/admincerts/gov.hk-admin-cert.pem  ${_CRYPTO_CONFIG_DIR}/gov.hk/msp/admincerts
-sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/assets/ca/gov.hk-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/gov.hk/msp/cacerts
-sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/gov.hk/msp/tlscacerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/msp/admincerts/gov.hk-admin-cert.pem  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/admincerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/assets/ca/gov.hk-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/cacerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/tlscacerts
 
 # Ubuntu requires ownership of orderer certs
 sudo chown -R $(whoami) ${_CRYPTO_CONFIG_DIR}/cbody.com

@@ -1,7 +1,7 @@
 
 # Enroll tls-ca.cbody.com's Admin
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/tls-ca.cbody.com/server/ca-cert.pem
-export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/CBodyMSP/tls/server/ca-cert.pem
+export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/CBodyMSP/tls/admin
 
 fabric-ca-client enroll -d -u https://tls-ca-admin:tls-ca-adminPW@0.0.0.0:6052
 fabric-ca-client register -d --id.name peer0.pcch.net --id.secret peer0PW --id.type peer -u https://0.0.0.0:6052
@@ -20,7 +20,7 @@ fabric-ca-client register -d --id.name orderer4.cbody.com --id.secret ordererPW 
 
 # Copy certificate of the TLS CA for PccH peer0
 mkdir -p /var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/assets/tls-ca/tls-ca-cert.pem
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll PccH peer0
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
@@ -36,7 +36,7 @@ mv /var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/tls-msp/keystore/* /var/a
 
 # Copy certificate of the TLS CA for PccH peer1
 mkdir -p /var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/assets/tls-ca/tls-ca-cert.pem
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll PccH peer1
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
@@ -52,7 +52,7 @@ mv /var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/tls-msp/keystore/* /var/a
 
 # Copy certificate of the TLS CA for HKGov peer0
 mkdir -p /var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/assets/tls-ca/tls-ca-cert.pem
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll HKGov peer0
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
@@ -68,7 +68,7 @@ mv /var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/keystore/* /var/ar
 
 # Copy certificate of the TLS CA for HKGov peer1
 mkdir -p /var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/assets/tls-ca/tls-ca-cert.pem
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll HKGov peer1
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
@@ -85,7 +85,7 @@ mv /var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/tls-msp/keystore/* /var/ar
 
 # Copy certificate of tls-ca.cbody.com for CBody orderer0
 mkdir -p /var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/assets/tls-ca/tls-ca-cert.pem
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll for CBody orderer0
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
@@ -97,7 +97,7 @@ mv /var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/keystore/* /
 
 # Copy certificate of tls-ca.cbody.com for CBody orderer1
 mkdir -p /var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/assets/tls-ca/tls-ca-cert.pem
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll for CBody orderer1
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
@@ -109,7 +109,7 @@ mv /var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/keystore/* /
 
 # Copy certificate of tls-ca.cbody.com for CBody orderer2
 mkdir -p /var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/assets/tls-ca/tls-ca-cert.pem
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll for CBody orderer2
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
@@ -121,7 +121,7 @@ mv /var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/keystore/* /
 
 # Copy certificate of tls-ca.cbody.com for CBody orderer3
 mkdir -p /var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/assets/tls-ca/tls-ca-cert.pem
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll for CBody orderer3
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
@@ -133,7 +133,7 @@ mv /var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/keystore/* /
 
 # Copy certificate of tls-ca.cbody.com for CBody orderer4
 mkdir -p /var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls-ca.cbody.com/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/assets/tls-ca/tls-ca-cert.pem
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/assets/tls-ca/tls-ca-cert.pem
 
 # Enroll for CBody orderer4
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp

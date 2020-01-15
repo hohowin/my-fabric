@@ -17,7 +17,6 @@
         "docker": "/var/artifacts",
         "crypto": "crypto-config",
         "production": "production",
-        "caserver-home": "server",
         "orderer-home": "orderer",
         "peers-working-dir": "/opt/gopath/src/github.com/hyperledger/fabric"
     },
@@ -30,13 +29,15 @@
                 "port": "6052",
                 "admin": "tls-ca-admin",
                 "adminpw": "tls-ca-adminPW",
-                "admin-cert-path": "CBodyMSP/tls-ca.cbody.com/admin"
+                "admin-cert-path": "CBodyMSP/tls/admin",
+                "server-home": "CBodyMSP/tls/server"
             }
         },
         "orderer": {
             "name": "CBody",
             "id": "CBodyMSP",
             "domain": "cbody.com",
+            "msp-path": "CBodyMSP/msp",
             "admin-cert-path": "CBodyMSP/admin",
             "ca-server-cert-path": "CBodyMSP/ca/crypto",
             "orderers": {
@@ -107,7 +108,8 @@
                 "port": "6053",
                 "admin": "rca-hktfp-admin",
                 "adminpw": "rca-hktfp-adminPW",
-                "admin-cert-path": "CBodyMSP/ca/admin"
+                "admin-cert-path": "CBodyMSP/ca/admin",
+                "server-home": "CBodyMSP/ca/server"
             }
         },
         "peer": [
@@ -116,6 +118,7 @@
                 "script-naming": "org1",
                 "id": "PccHMSP",
                 "domain": "pcch.net",
+                "msp-path": "PccHMSP/msp",
                 "admin-cert-path": "PccHMSP/admin",
                 "ca-server-cert-path": "PccHMSP/ca/crypto",
                 "peers": {
@@ -144,7 +147,8 @@
                     "port": "6054",
                     "admin": "rca-pcch-admin",
                     "adminpw": "rca-pcch-adminPW",
-                    "admin-cert-path": "PccHMSP/ca/admin"
+                    "admin-cert-path": "PccHMSP/ca/admin",
+                    "server-home": "PccHMSP/ca/server"
                 }
             },
             {
@@ -152,6 +156,7 @@
                 "script-naming": "org2",
                 "id": "HKGovMSP",
                 "domain": "gov.hk",
+                "msp-path": "HKGovMSP/msp",
                 "admin-cert-path": "HKGovMSP/admin",
                 "ca-server-cert-path": "HKGovMSP/ca/crypto",
                 "peers": {
@@ -180,7 +185,8 @@
                     "port": "6055",
                     "admin": "rca-hkgov-admin",
                     "adminpw": "rca-hkgov-adminPW",
-                    "admin-cert-path": "HKGovMSP/ca/admin"
+                    "admin-cert-path": "HKGovMSP/ca/admin",
+                    "server-home": "HKGovMSP/ca/server"
                 }
             }
         ]

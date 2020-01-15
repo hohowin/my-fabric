@@ -19,7 +19,7 @@ Organizations:
       ID: CBodyMSP
 
       # MSPDir is the filesystem path which contains the MSP configuration
-      MSPDir: ../artifacts/crypto-config/cbody.com/msp
+      MSPDir: ../artifacts/crypto-config/CBodyMSP/msp
 
       # Policies defines the set of policies at this level of the config tree
       # For organization policies, their canonical path is usually
@@ -46,7 +46,7 @@ Organizations:
       ID: PccHMSP
 
       # MSPDir is the filesystem path which contains the MSP configuration
-      MSPDir: ../artifacts/crypto-config/pcch.net/msp
+      MSPDir: ../artifacts/crypto-config/PccHMSP/msp
 
       Policies:
          Readers:
@@ -83,7 +83,7 @@ Organizations:
       ID: HKGovMSP
 
       # MSPDir is the filesystem path which contains the MSP configuration
-      MSPDir: ../artifacts/crypto-config/gov.hk/msp
+      MSPDir: ../artifacts/crypto-config/HKGovMSP/msp
 
       Policies:
          Readers:

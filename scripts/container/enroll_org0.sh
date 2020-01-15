@@ -1,6 +1,6 @@
 # Copy TLS Cert
 mkdir -p /var/artifacts/crypto-config/CBodyMSP/ca/crypto
-cp /var/artifacts/crypto-config/rca.cbody.com/server/ca-cert.pem /var/artifacts/crypto-config/CBodyMSP/ca/crypto
+cp /var/artifacts/crypto-config/CBodyMSP/ca/server/ca-cert.pem /var/artifacts/crypto-config/CBodyMSP/ca/crypto
 
 # Enroll Orderer Org's CA Admin
 export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/CBodyMSP/ca/crypto/ca-cert.pem

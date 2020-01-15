@@ -1,6 +1,6 @@
 # Copy TLS Cert
 mkdir -p {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.orderer.ca-server-cert-path}}}
-cp {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{orgs.orderer.ca.host}}{{network.host-delimiter}}{{orgs.orderer.domain}}/{{{artifacts.caserver-home}}}/ca-cert.pem {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.orderer.ca-server-cert-path}}}
+cp {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.orderer.ca.server-home}}}/ca-cert.pem {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.orderer.ca-server-cert-path}}}
 
 # Enroll Orderer Org's CA Admin
 export FABRIC_CA_CLIENT_TLS_CERTFILES={{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.orderer.ca-server-cert-path}}}/ca-cert.pem

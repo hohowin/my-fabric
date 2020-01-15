@@ -13,7 +13,7 @@ services:
         restart: always
         environment:
             - HYPERLEDGER_VOL=/var/artifacts
-            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/tls-ca.cbody.com/server
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/CBodyMSP/tls/server
             - FABRIC_CA_SERVER_CSR_CN=tls-ca.cbody.com
             - FABRIC_CA_SERVER_CA_NAME=tls-ca.cbody.com
         ports:
@@ -31,7 +31,7 @@ services:
         restart: always
         environment:
             - HYPERLEDGER_VOL=/var/artifacts
-            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/rca.cbody.com/server
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/CBodyMSP/ca/server
             - FABRIC_CA_SERVER_CSR_CN=rca.cbody.com
             - FABRIC_CA_SERVER_CA_NAME=rca.cbody.com
         ports:
@@ -49,7 +49,7 @@ services:
         restart: always
         environment:
             - HYPERLEDGER_VOL=/var/artifacts
-            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/rca.pcch.net/server
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/PccHMSP/ca/server
             - FABRIC_CA_SERVER_CSR_CN=rca.pcch.net
             - FABRIC_CA_SERVER_CA_NAME=rca.pcch.net
         ports:
@@ -67,7 +67,7 @@ services:
         restart: always
         environment:
             - HYPERLEDGER_VOL=/var/artifacts
-            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/rca.gov.hk/server
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/HKGovMSP/ca/server
             - FABRIC_CA_SERVER_CSR_CN=rca.gov.hk
             - FABRIC_CA_SERVER_CA_NAME=rca.gov.hk
         ports:
