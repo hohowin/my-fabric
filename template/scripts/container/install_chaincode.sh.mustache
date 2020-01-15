@@ -1,4 +1,3 @@
-#!/bin/sh
 ## install_chaincode.sh [org] [peer] [chaincode path] [name] [version] [port] [admin cert path] [peer cert path]
 ## Example: ./install_chaincode.sh org1 peer1 op eventstore 1.0 7051 org1/admin org1/peer0
 if [ $# -ne 8 ]
