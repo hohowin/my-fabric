@@ -7,14 +7,6 @@ if [ $# -eq 1 ]; then
     view="./_views/$1.json"
 fi
 
-# Handle '*.mustache' files
-files="find . -name '*.mustache' -print"
-for infile in `eval ${files}`; do
-    echo "Processing ${infile}..."
-    outfile=$(echo .${infile} | sed 's/\(.*\)\.mustache/\1/')
-    mustache ${view} ${infile} > ${outfile}
-done
-
 # Handle '*.mustaches' files - which split the file into few files
 files="find . -name '*.mustaches' -print"
 for infile in `eval ${files}`; do
@@ -33,6 +25,16 @@ for infile in `eval ${files}`; do
 
     # Remove the intermediate out file
     rm ${outfile}
+done
+
+# Handle '*.mustache' files
+# Note: mustache files have to be processed second to allow some files
+# (e.g. join_channel_org1.sh is different from other join channel scripts) to be overwritten.
+files="find . -name '*.mustache' -print"
+for infile in `eval ${files}`; do
+    echo "Processing ${infile}..."
+    outfile=$(echo .${infile} | sed 's/\(.*\)\.mustache/\1/')
+    mustache ${view} ${infile} > ${outfile}
 done
 
 echo "Done!"
