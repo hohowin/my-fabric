@@ -30,7 +30,7 @@ fabric-ca-client enroll -d -u https://peer1.gov.hk:peer1PW@0.0.0.0:6055
 
 # Enroll HKGov's Admin
 export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/HKGovMSP/admin
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/HKGovMSP&#x2F;peer0.gov.hk/assets/ca/gov.hk-ca-cert.pem
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/assets/ca/gov.hk-ca-cert.pem
 export FABRIC_CA_CLIENT_MSPDIR=msp
 fabric-ca-client enroll -d -u https://admin-gov.hk:HKGovAdminPW@0.0.0.0:6055
 

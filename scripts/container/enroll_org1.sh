@@ -6,7 +6,6 @@ cp /var/artifacts/crypto-config/PccHMSP/ca/server/ca-cert.pem /var/artifacts/cry
 export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/PccHMSP/ca/crypto/ca-cert.pem
 export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/PccHMSP/ca/admin
 fabric-ca-client enroll -d -u https://rca-pcch-admin:rca-pcch-adminPW@0.0.0.0:6054
-
 fabric-ca-client register -d --id.name peer0.pcch.net --id.secret peer0PW --id.type peer -u https://0.0.0.0:6054
 fabric-ca-client register -d --id.name peer1.pcch.net --id.secret peer1PW --id.type peer -u https://0.0.0.0:6054
 fabric-ca-client register -d --id.name admin-pcch.net --id.secret PccHAdminPW --id.type admin --id.attrs "hf.Registrar.Attributes=*,hf.Revoker=true,hf.GenCRL=true,admin=true:ecert,abac.init=true:ecert" -u https://0.0.0.0:6054
