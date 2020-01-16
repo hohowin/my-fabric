@@ -17,11 +17,11 @@ for infile in `eval ${files}`; do
     mustache ${view} ${infile} > ${outfile}
 
     # Split the file name with '.'
-    filnam=$(basename ${outfile} | sed 's/\.[^.]*$//')
+    filnam=$(echo ${outfile} | sed 's/\.[^.]*$//')
     filext=$(echo ${outfile} | sed 's/.*\.//')
 
     # Split the file into multiple files
-    awk -v filnam=${filnam} -v filext=${filext} '/--SPLIT--/ {x = sprintf(filnam"%s%s", ++i, "."filext); next} {print > x}' ${outfile}
+    awk -v filnam=${filnam} -v filext=${filext} '/-- SPLIT WITH AWK --/ {x = sprintf(filnam"%s%s", ++i, "."filext); next} {print > x}' ${outfile}
 
     # Remove the intermediate out file
     rm ${outfile}
