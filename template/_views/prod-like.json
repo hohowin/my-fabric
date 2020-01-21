@@ -8,10 +8,8 @@
         "peer-channels": [
             "genericchannel"
         ],
-        "nodes": [
-        ]
+        "nodes": []
     },
-
     "artifacts": {
         "local": "../artifacts",
         "docker": "/var/artifacts",
@@ -20,7 +18,6 @@
         "orderer-home": "orderer",
         "peers-working-dir": "/opt/gopath/src/github.com/hyperledger/fabric"
     },
-
     "orgs": {
         "tls": {
             "domain": "cbody.com",
@@ -39,6 +36,8 @@
             "domain": "cbody.com",
             "msp-path": "CBodyMSP/msp",
             "admin-cert-path": "CBodyMSP/admin",
+            "admin-cert-user": "admin-cbody.com",
+            "admin-cert-pw": "sR7w9xWY",
             "ca-server-cert-path": "CBodyMSP/ca/crypto",
             "orderers": {
                 "type": "etcdraft",
@@ -59,27 +58,67 @@
                     {
                         "-": "orderer0",
                         "ext-port": "7050",
-                        "cert-path": "CBodyMSP/orderer0.cbody.com"
+                        "cert-path": "CBodyMSP/orderer0.cbody.com",
+                        "tls": {
+                            "user": "orderer0.cbody.com",
+                            "pw": "PCzEE5x2"
+                        },
+                        "cert": {
+                            "user": "orderer0.cbody.com",
+                            "pw": "DPCxKv8m"
+                        }
                     },
                     {
                         "-": "orderer1",
                         "ext-port": "7150",
-                        "cert-path": "CBodyMSP/orderer1.cbody.com"
+                        "cert-path": "CBodyMSP/orderer1.cbody.com",
+                        "tls": {
+                            "user": "orderer1.cbody.com",
+                            "pw": "E9Rd54w2"
+                        },
+                        "cert": {
+                            "user": "orderer1.cbody.com",
+                            "pw": "PCzEE5x2"
+                        }
                     },
                     {
                         "-": "orderer2",
                         "ext-port": "7250",
-                        "cert-path": "CBodyMSP/orderer2.cbody.com"
+                        "cert-path": "CBodyMSP/orderer2.cbody.com",
+                        "tls": {
+                            "user": "orderer2.cbody.com",
+                            "pw": "x4Y95QFC"
+                        },
+                        "cert": {
+                            "user": "orderer2.cbody.com",
+                            "pw": "T2ZNRe8x"
+                        }
                     },
                     {
                         "-": "orderer3",
                         "ext-port": "7350",
-                        "cert-path": "CBodyMSP/orderer3.cbody.com"
+                        "cert-path": "CBodyMSP/orderer3.cbody.com",
+                        "tls": {
+                            "user": "orderer3.cbody.com",
+                            "pw": "gf4ZKPSU"
+                        },
+                        "cert": {
+                            "user": "orderer3.cbody.com",
+                            "pw": "7B5qMkhg"
+                        }
                     },
                     {
                         "-": "orderer4",
                         "ext-port": "7450",
                         "cert-path": "CBodyMSP/orderer4.cbody.com",
+                        "tls": {
+                            "user": "orderer4.cbody.com",
+                            "pw": "NhZM2pLZ"
+                        },
+                        "cert": {
+                            "user": "orderer4.cbody.com",
+                            "pw": "p8Maufjr"
+                        },
                         "islast": true
                     }
                 ]
@@ -87,16 +126,14 @@
             "kafkas": {
                 "retry-shortinterval": "1s",
                 "retry-shorttotal": "30s",
-                "endpoints": [
-                ],
+                "endpoints": [],
                 "ports": [
                     "9092",
                     "9093"
                 ]
             },
             "zookeepers": {
-                "endpoints": [
-                ],
+                "endpoints": [],
                 "ports": [
                     "2181",
                     "2888",
@@ -120,6 +157,8 @@
                 "domain": "pcch.net",
                 "msp-path": "PccHMSP/msp",
                 "admin-cert-path": "PccHMSP/admin",
+                "admin-cert-user": "admin-pcch.net",
+                "admin-cert-pw": "Heym2rQK",
                 "ca-server-cert-path": "PccHMSP/ca/crypto",
                 "peers": {
                     "anchor": "peer0",
@@ -130,7 +169,15 @@
                             "port": "7051",
                             "chaincode-port": "7052",
                             "eventhub-port": "7053",
-                            "cert-path": "PccHMSP/peer0.pcch.net"
+                            "cert-path": "PccHMSP/peer0.pcch.net",
+                            "tls": {
+                                "user": "peer0.pcch.net",
+                                "pw": "9d8vdCdk"
+                            },
+                            "cert": {
+                                "user": "peer0.pcch.net",
+                                "pw": "Tt4g3KLH"
+                            }
                         },
                         {
                             "-": "peer1",
@@ -138,6 +185,14 @@
                             "chaincode-port": "7152",
                             "eventhub-port": "7153",
                             "cert-path": "PccHMSP/peer1.pcch.net",
+                            "tls": {
+                                "user": "peer1.pcch.net",
+                                "pw": "Trxg68PA"
+                            },
+                            "cert": {
+                                "user": "peer1.pcch.net",
+                                "pw": "C2npBNcf"
+                            },
                             "islast": true
                         }
                     ]
@@ -158,6 +213,8 @@
                 "domain": "gov.hk",
                 "msp-path": "HKGovMSP/msp",
                 "admin-cert-path": "HKGovMSP/admin",
+                "admin-cert-user": "admin-gov.hk",
+                "admin-cert-pw": "mEN6bpQW",
                 "ca-server-cert-path": "HKGovMSP/ca/crypto",
                 "peers": {
                     "anchor": "peer0",
@@ -168,7 +225,15 @@
                             "port": "7251",
                             "chaincode-port": "7252",
                             "eventhub-port": "7253",
-                            "cert-path": "HKGovMSP/peer0.gov.hk"
+                            "cert-path": "HKGovMSP/peer0.gov.hk",
+                            "tls": {
+                                "user": "peer0.gov.hk",
+                                "pw": "zkZDG96L"
+                            },
+                            "cert": {
+                                "user": "peer0.gov.hk",
+                                "pw": "4PBPEkwt"
+                            }
                         },
                         {
                             "-": "peer1",
@@ -176,6 +241,14 @@
                             "chaincode-port": "7352",
                             "eventhub-port": "7353",
                             "cert-path": "HKGovMSP/peer1.gov.hk",
+                            "tls": {
+                                "user": "peer1.gov.hk",
+                                "pw": "4KnyJmwB"
+                            },
+                            "cert": {
+                                "user": "peer1.gov.hk",
+                                "pw": "Q528SdnZ"
+                            },
                             "islast": true
                         }
                     ]
