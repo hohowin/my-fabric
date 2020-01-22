@@ -54,5 +54,5 @@ If everything is good, we can clean up the environment. :tada::tada:
 The binaries are in *Linux* version. In case you are working with another OS and the executables in *bin* directory do not work, please download the hyperledger fabric sample code and copy the corresponding executables to the *bin* directory.
 
 ```console
-curl -sSL http://bit.ly/2ysbOFE | bash -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.18
 ```
