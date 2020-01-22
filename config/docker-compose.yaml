@@ -59,20 +59,20 @@ services:
             - ../scripts/container:/setup
             - ../artifacts:/var/artifacts
 
-    rca.gov.hk:
+    rca.gov.wakanda:
         extends:
             file: nodebase.yaml
             service: ca
-        container_name: rca.gov.hk
+        container_name: rca.gov.wakanda
         restart: always
         environment:
             - HYPERLEDGER_VOL=/var/artifacts
-            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/HKGovMSP/ca/server
-            - FABRIC_CA_SERVER_CSR_CN=rca.gov.hk
-            - FABRIC_CA_SERVER_CA_NAME=rca.gov.hk
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/WakandaGovMSP/ca/server
+            - FABRIC_CA_SERVER_CSR_CN=rca.gov.wakanda
+            - FABRIC_CA_SERVER_CA_NAME=rca.gov.wakanda
         ports:
             - 6055:6055
-        command: sh -c 'fabric-ca-server start -d -b rca-hkgov-admin:rca-hkgov-adminPW --cfg.affiliations.allowremove  --cfg.identities.allowremove --port 6055'
+        command: sh -c 'fabric-ca-server start -d -b rca-wakanda-admin:rca-wakanda-adminPW --cfg.affiliations.allowremove  --cfg.identities.allowremove --port 6055'
         volumes:
             - ../scripts/container:/setup
             - ../artifacts:/var/artifacts
@@ -129,54 +129,54 @@ services:
             - 7151:7151
             - 7153:7153
 
-    peer0.gov.hk:
+    peer0.gov.wakanda:
         extends:
             file: nodebase.yaml
             service: peer
-        container_name: peer0.gov.hk
+        container_name: peer0.gov.wakanda
         environment:
-            - CORE_PEER_ID=peer0.gov.hk
-            - CORE_PEER_ADDRESS=peer0.gov.hk:7251
+            - CORE_PEER_ID=peer0.gov.wakanda
+            - CORE_PEER_ADDRESS=peer0.gov.wakanda:7251
             - CORE_PEER_LISTENADDRESS=0.0.0.0:7251
-            - CORE_PEER_LOCALMSPID=HKGovMSP
-            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/msp
-            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/signcerts/cert.pem
-            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/keystore/key.pem
-            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
-            - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.gov.hk:7351
-            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.gov.hk:7251
+            - CORE_PEER_LOCALMSPID=WakandaGovMSP
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.gov.wakanda:7351
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.gov.wakanda:7251
             - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7252
-        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/HKGovMSP/peer0.gov.hk
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/WakandaGovMSP/peer0.gov.wakanda
         volumes:
             - /var/run:/host/var/run
-            - ../artifacts/production/HKGovMSP/peer0.gov.hk:/var/artifacts/production
-            - ../artifacts/crypto-config/HKGovMSP/peer0.gov.hk:/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk
+            - ../artifacts/production/WakandaGovMSP/peer0.gov.wakanda:/var/artifacts/production
+            - ../artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda:/var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda
         ports:
             - 7251:7251
             - 7253:7253
 
-    peer1.gov.hk:
+    peer1.gov.wakanda:
         extends:
             file: nodebase.yaml
             service: peer
-        container_name: peer1.gov.hk
+        container_name: peer1.gov.wakanda
         environment:
-            - CORE_PEER_ID=peer1.gov.hk
-            - CORE_PEER_ADDRESS=peer1.gov.hk:7351
+            - CORE_PEER_ID=peer1.gov.wakanda
+            - CORE_PEER_ADDRESS=peer1.gov.wakanda:7351
             - CORE_PEER_LISTENADDRESS=0.0.0.0:7351
-            - CORE_PEER_LOCALMSPID=HKGovMSP
-            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/msp
-            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/tls-msp/signcerts/cert.pem
-            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/tls-msp/keystore/key.pem
-            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
-            - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.gov.hk:7251
-            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.gov.hk:7351
+            - CORE_PEER_LOCALMSPID=WakandaGovMSP
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.gov.wakanda:7251
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.gov.wakanda:7351
             - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7352
-        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/HKGovMSP/peer1.gov.hk
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/WakandaGovMSP/peer1.gov.wakanda
         volumes:
             - /var/run:/host/var/run
-            - ../artifacts/production/HKGovMSP/peer1.gov.hk:/var/artifacts/production
-            - ../artifacts/crypto-config/HKGovMSP/peer1.gov.hk:/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk
+            - ../artifacts/production/WakandaGovMSP/peer1.gov.wakanda:/var/artifacts/production
+            - ../artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda:/var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda
         ports:
             - 7351:7351
             - 7353:7353
@@ -320,19 +320,19 @@ services:
             - ../scripts/container:/setup
             - ../chaincode:/opt/gopath/src/github.com/hyperledger/fabric/chaincode
 
-    cli.gov.hk:
+    cli.gov.wakanda:
         extends:
             file: nodebase.yaml
             service: cli
-        container_name: cli.gov.hk
+        container_name: cli.gov.wakanda
         environment:
             - HYPERLEDGER_VOL=/var/artifacts
-            - CORE_PEER_ID=cli.gov.hk
-            - CORE_PEER_ADDRESS=peer0.gov.hk:7251
-            - CORE_PEER_LOCALMSPID=HKGovMSP
-            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
-            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/msp
-        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/gov.hk
+            - CORE_PEER_ID=cli.gov.wakanda
+            - CORE_PEER_ADDRESS=peer0.gov.wakanda:7251
+            - CORE_PEER_LOCALMSPID=WakandaGovMSP
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/msp
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/gov.wakanda
         command: sh
         volumes:
             - ../artifacts:/var/artifacts

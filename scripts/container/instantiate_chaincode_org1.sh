@@ -1,4 +1,4 @@
-members="'PccHMSP.member' ,'HKGovMSP.member' ,"
+members="'PccHMSP.member' ,'WakandaGovMSP.member' ,"
 members_trimmed=$(echo ${members} |sed 's/,$//')
 
 export CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/PccHMSP/admin/msp

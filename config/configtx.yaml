@@ -75,26 +75,26 @@ Organizations:
          - Host: peer0.pcch.net
            Port: 7051
 
-   - &HKGov
+   - &WakandaGov
 
-      Name: HKGov
+      Name: WakandaGov
 
       # ID to load the MSP definition as
-      ID: HKGovMSP
+      ID: WakandaGovMSP
 
       # MSPDir is the filesystem path which contains the MSP configuration
-      MSPDir: ../artifacts/crypto-config/HKGovMSP/msp
+      MSPDir: ../artifacts/crypto-config/WakandaGovMSP/msp
 
       Policies:
          Readers:
             Type: Signature
-            Rule: "OR('HKGovMSP.member')"
+            Rule: "OR('WakandaGovMSP.member')"
          Writers:
             Type: Signature
-            Rule: "OR('HKGovMSP.member')"
+            Rule: "OR('WakandaGovMSP.member')"
          Admins:
             Type: Signature
-            Rule: "OR('HKGovMSP.admin')"
+            Rule: "OR('WakandaGovMSP.admin')"
 
       # OrdererEndpoints is a list of all orderers this org runs which clients
       # and peers may to connect to to push transactions and receive blocks respectively.
@@ -109,7 +109,7 @@ Organizations:
          # AnchorPeers defines the location of peers which can be used
          # for cross org gossip communication.  Note, this value is only
          # encoded in the genesis block in the Application section context
-         - Host: peer0.gov.hk
+         - Host: peer0.gov.wakanda
            Port: 7251
 
 
@@ -392,7 +392,7 @@ Profiles:
          Big4HK:
             Organizations:
                - *PccH
-               - *HKGov
+               - *WakandaGov
 
    OrgsChannel:
       Consortium: Big4HK
@@ -401,6 +401,6 @@ Profiles:
          <<: *ApplicationDefaults
          Organizations:
             - *PccH
-            - *HKGov
+            - *WakandaGov
          Capabilities:
             <<: *ApplicationCapabilities

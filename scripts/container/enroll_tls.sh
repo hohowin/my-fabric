@@ -6,8 +6,8 @@ export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/CBodyMSP/tls/admin
 fabric-ca-client enroll -d -u https://tls-ca-admin:tls-ca-adminPW@0.0.0.0:6052
 fabric-ca-client register -d --id.name peer0.pcch.net --id.secret 9d8vdCdk --id.type peer -u https://0.0.0.0:6052
 fabric-ca-client register -d --id.name peer1.pcch.net --id.secret Trxg68PA --id.type peer -u https://0.0.0.0:6052
-fabric-ca-client register -d --id.name peer0.gov.hk --id.secret zkZDG96L --id.type peer -u https://0.0.0.0:6052
-fabric-ca-client register -d --id.name peer1.gov.hk --id.secret 4KnyJmwB --id.type peer -u https://0.0.0.0:6052
+fabric-ca-client register -d --id.name peer0.gov.wakanda --id.secret zkZDG96L --id.type peer -u https://0.0.0.0:6052
+fabric-ca-client register -d --id.name peer1.gov.wakanda --id.secret 4KnyJmwB --id.type peer -u https://0.0.0.0:6052
 fabric-ca-client register -d --id.name orderer0.cbody.com --id.secret PCzEE5x2 --id.type orderer -u https://0.0.0.0:6052
 fabric-ca-client register -d --id.name orderer1.cbody.com --id.secret E9Rd54w2 --id.type orderer -u https://0.0.0.0:6052
 fabric-ca-client register -d --id.name orderer2.cbody.com --id.secret x4Y95QFC --id.type orderer -u https://0.0.0.0:6052
@@ -47,36 +47,36 @@ fabric-ca-client enroll -d -u https://peer1.pcch.net:Trxg68PA@0.0.0.0:6052 --enr
 mv /var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/tls-msp/keystore/* /var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/tls-msp/keystore/key.pem
 
 #############
-# HKGov peer0#
+# WakandaGov peer0#
 #############
 
-# Copy certificate of the TLS CA for HKGov peer0
-mkdir -p /var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/assets/tls-ca/tls-ca-cert.pem
+# Copy certificate of the TLS CA for WakandaGov peer0
+mkdir -p /var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/assets/tls-ca
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/assets/tls-ca/tls-ca-cert.pem
 
-# Enroll HKGov peer0
+# Enroll WakandaGov peer0
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
-export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/assets/tls-ca/tls-ca-cert.pem
-fabric-ca-client enroll -d -u https://peer0.gov.hk:zkZDG96L@0.0.0.0:6052 --enrollment.profile tls --csr.hosts peer0.gov.hk,127.0.0.1
+export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/assets/tls-ca/tls-ca-cert.pem
+fabric-ca-client enroll -d -u https://peer0.gov.wakanda:zkZDG96L@0.0.0.0:6052 --enrollment.profile tls --csr.hosts peer0.gov.wakanda,127.0.0.1
 
-mv /var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/keystore/* /var/artifacts/crypto-config/HKGovMSP/peer0.gov.hk/tls-msp/keystore/key.pem
+mv /var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/tls-msp/keystore/* /var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/tls-msp/keystore/key.pem
 
 #############
-# HKGov peer1#
+# WakandaGov peer1#
 #############
 
-# Copy certificate of the TLS CA for HKGov peer1
-mkdir -p /var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/assets/tls-ca
-cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/assets/tls-ca/tls-ca-cert.pem
+# Copy certificate of the TLS CA for WakandaGov peer1
+mkdir -p /var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/assets/tls-ca
+cp /var/artifacts/crypto-config/CBodyMSP/tls/admin/msp/cacerts/0-0-0-0-6052.pem /var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/assets/tls-ca/tls-ca-cert.pem
 
-# Enroll HKGov peer1
+# Enroll WakandaGov peer1
 export FABRIC_CA_CLIENT_MSPDIR=tls-msp
-export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/assets/tls-ca/tls-ca-cert.pem
-fabric-ca-client enroll -d -u https://peer1.gov.hk:4KnyJmwB@0.0.0.0:6052 --enrollment.profile tls --csr.hosts peer1.gov.hk,127.0.0.1
+export FABRIC_CA_CLIENT_HOME=/var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/assets/tls-ca/tls-ca-cert.pem
+fabric-ca-client enroll -d -u https://peer1.gov.wakanda:4KnyJmwB@0.0.0.0:6052 --enrollment.profile tls --csr.hosts peer1.gov.wakanda,127.0.0.1
 
-mv /var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/tls-msp/keystore/* /var/artifacts/crypto-config/HKGovMSP/peer1.gov.hk/tls-msp/keystore/key.pem
+mv /var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/tls-msp/keystore/* /var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/tls-msp/keystore/key.pem
 
 
 ###########

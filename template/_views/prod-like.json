@@ -207,15 +207,15 @@
                 }
             },
             {
-                "name": "HKGov",
+                "name": "WakandaGov",
                 "script-naming": "org2",
-                "id": "HKGovMSP",
-                "domain": "gov.hk",
-                "msp-path": "HKGovMSP/msp",
-                "admin-cert-path": "HKGovMSP/admin",
-                "admin-cert-user": "admin-gov.hk",
+                "id": "WakandaGovMSP",
+                "domain": "gov.wakanda",
+                "msp-path": "WakandaGovMSP/msp",
+                "admin-cert-path": "WakandaGovMSP/admin",
+                "admin-cert-user": "admin-gov.wakanda",
                 "admin-cert-pw": "mEN6bpQW",
-                "ca-server-cert-path": "HKGovMSP/ca/crypto",
+                "ca-server-cert-path": "WakandaGovMSP/ca/crypto",
                 "peers": {
                     "anchor": "peer0",
                     "anchor-port": "7251",
@@ -225,13 +225,13 @@
                             "port": "7251",
                             "chaincode-port": "7252",
                             "eventhub-port": "7253",
-                            "cert-path": "HKGovMSP/peer0.gov.hk",
+                            "cert-path": "WakandaGovMSP/peer0.gov.wakanda",
                             "tls": {
-                                "user": "peer0.gov.hk",
+                                "user": "peer0.gov.wakanda",
                                 "pw": "zkZDG96L"
                             },
                             "cert": {
-                                "user": "peer0.gov.hk",
+                                "user": "peer0.gov.wakanda",
                                 "pw": "4PBPEkwt"
                             }
                         },
@@ -240,13 +240,13 @@
                             "port": "7351",
                             "chaincode-port": "7352",
                             "eventhub-port": "7353",
-                            "cert-path": "HKGovMSP/peer1.gov.hk",
+                            "cert-path": "WakandaGovMSP/peer1.gov.wakanda",
                             "tls": {
-                                "user": "peer1.gov.hk",
+                                "user": "peer1.gov.wakanda",
                                 "pw": "4KnyJmwB"
                             },
                             "cert": {
-                                "user": "peer1.gov.hk",
+                                "user": "peer1.gov.wakanda",
                                 "pw": "Q528SdnZ"
                             },
                             "islast": true
@@ -256,10 +256,10 @@
                 "ca": {
                     "host": "rca",
                     "port": "6055",
-                    "admin": "rca-hkgov-admin",
-                    "adminpw": "rca-hkgov-adminPW",
-                    "admin-cert-path": "HKGovMSP/ca/admin",
-                    "server-home": "HKGovMSP/ca/server"
+                    "admin": "rca-wakanda-admin",
+                    "adminpw": "rca-wakanda-adminPW",
+                    "admin-cert-path": "WakandaGovMSP/ca/admin",
+                    "server-home": "WakandaGovMSP/ca/server"
                 }
             }
         ]

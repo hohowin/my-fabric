@@ -21,15 +21,15 @@ sudo cp  ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/msp/admincerts/pcch.net-ad
 sudo cp  ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/assets/ca/pcch.net-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/PccHMSP/msp/cacerts
 sudo cp  ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/PccHMSP/msp/tlscacerts
 
-# HKGov
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/admincerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/cacerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/tlscacerts
-sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/users
+# WakandaGov
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/msp/admincerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/msp/cacerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/msp/tlscacerts
+sudo mkdir -p ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/msp/users
 
-sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/msp/admincerts/gov.hk-admin-cert.pem  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/admincerts
-sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/assets/ca/gov.hk-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/cacerts
-sudo cp  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/peer0.gov.hk/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/HKGovMSP/msp/tlscacerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/peer0.gov.wakanda/msp/admincerts/gov.wakanda-admin-cert.pem  ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/msp/admincerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/peer0.gov.wakanda/assets/ca/gov.wakanda-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/msp/cacerts
+sudo cp  ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/peer0.gov.wakanda/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/msp/tlscacerts
 
 # Ubuntu requires ownership of orderer certs
 sudo chown -R $(whoami) ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer0.cbody.com

@@ -8,8 +8,8 @@
     "memberOnlyRead": true
   },
   {
-    "name": "HKGovPrivateDetails",
-    "policy": "OR('HKGovMSP.member')",
+    "name": "WakandaGovPrivateDetails",
+    "policy": "OR('WakandaGovMSP.member')",
     "requiredPeerCount": 0,
     "maxPeerCount": 4,
     "blockToLive": 0,
