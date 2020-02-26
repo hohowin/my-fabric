@@ -15,7 +15,3 @@ export CORE_PEER_ADDRESS=peer1.gov.wakanda:7351
 peer channel join -b /var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/assets/genericchannel.block
 peer channel getinfo -c genericchannel
 
-# Update anchor peer
-peer channel update -c genericchannel -f /var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/assets/WakandaGovAnchors.tx \
-    -o orderer0.cbody.com:7050 \
-    --tls --cafile /var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem

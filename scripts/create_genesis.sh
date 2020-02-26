@@ -49,11 +49,3 @@ sudo cp genesis.block    ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer2.cbody.com
 sudo cp genesis.block    ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer3.cbody.com
 sudo cp genesis.block    ${_CRYPTO_CONFIG_DIR}/CBodyMSP/orderer4.cbody.com
 sudo mv channel.tx       ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/assets
-
-# Update Anchor peer
-${_FABRIC_DIR}/../bin/configtxgen -profile OrgsChannel -outputAnchorPeersUpdate PccHAnchors.tx -channelID genericchannel -asOrg PccH
-mkdir -p ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/assets
-sudo mv PccHAnchors.tx ${_CRYPTO_CONFIG_DIR}/PccHMSP/peer0.pcch.net/assets
-${_FABRIC_DIR}/../bin/configtxgen -profile OrgsChannel -outputAnchorPeersUpdate WakandaGovAnchors.tx -channelID genericchannel -asOrg WakandaGov
-mkdir -p ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/peer0.gov.wakanda/assets
-sudo mv WakandaGovAnchors.tx ${_CRYPTO_CONFIG_DIR}/WakandaGovMSP/peer0.gov.wakanda/assets
