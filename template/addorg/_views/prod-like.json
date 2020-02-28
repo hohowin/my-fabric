@@ -11,7 +11,7 @@
         "nodes": []
     },
     "artifacts": {
-        "local": "../artifacts",
+        "local": "../../../../artifacts",
         "docker": "/var/artifacts",
         "crypto": "crypto-config",
         "production": "production",
