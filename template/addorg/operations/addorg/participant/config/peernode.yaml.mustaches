@@ -1,4 +1,4 @@
-{{#orgs.peer}}
+{{#orgs.addorg}}
 {{#peers.endpoints}}
 -- SPLIT WITH AWK --
 version: '2'
@@ -34,4 +34,4 @@ services:
             - {{port}}:{{port}}
             - {{eventhub-port}}:{{eventhub-port}}
 {{/peers.endpoints}}
-{{/orgs.peer}}
+{{/orgs.addorg}}

@@ -5,7 +5,7 @@ networks:
 
 services:
 
-    {{#orgs.peer}}
+    {{#orgs.addorg}}
     {{ca.host}}{{network.host-delimiter}}{{domain}}:
         extends:
             file: nodebase.yaml
@@ -23,4 +23,4 @@ services:
         volumes:
             - ../scripts/container:/setup
             - {{{artifacts.local}}}:{{{artifacts.docker}}}
-    {{/orgs.peer}}
+    {{/orgs.addorg}}

@@ -5,7 +5,7 @@ networks:
 
 services:
 
-    {{#orgs.peer}}
+    {{#orgs.addorg}}
     cli{{network.host-delimiter}}{{domain}}:
         extends:
             file: nodebase.yaml
@@ -24,4 +24,4 @@ services:
             - {{{artifacts.local}}}:{{{artifacts.docker}}}
             - ../scripts/container:/setup
             - ../chaincode:{{{artifacts.peers-working-dir}}}/chaincode
-    {{/orgs.peer}}
+    {{/orgs.addorg}}
