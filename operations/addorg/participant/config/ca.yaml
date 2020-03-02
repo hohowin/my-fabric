@@ -1,0 +1,24 @@
+version: '2'
+
+networks:
+    myplatform:
+
+services:
+
+    rca.rebel.inc:
+        extends:
+            file: nodebase.yaml
+            service: ca
+        container_name: rca.rebel.inc
+        restart: always
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/RebelMSP/ca/server
+            - FABRIC_CA_SERVER_CSR_CN=rca.rebel.inc
+            - FABRIC_CA_SERVER_CA_NAME=rca.rebel.inc
+        ports:
+            - 6056:6056
+        command: sh -c 'fabric-ca-server start -d -b rca-rebel-admin:rca-rebel-adminPW --cfg.affiliations.allowremove  --cfg.identities.allowremove --port 6056'
+        volumes:
+            - ../scripts/container:/setup
+            - ../../../../artifacts:/var/artifacts

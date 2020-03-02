@@ -1,0 +1,46 @@
+################################################################################
+#
+#   Section: Organizations
+#
+#   - This section defines the different organizational identities which will
+#   be referenced later in the configuration.
+#
+################################################################################
+Organizations:
+
+   - &Rebel
+
+      Name: Rebel
+
+      # ID to load the MSP definition as
+      ID: RebelMSP
+
+      # MSPDir is the filesystem path which contains the MSP configuration
+      MSPDir: ../../../../artifacts/crypto-config/RebelMSP/msp
+
+      Policies:
+         Readers:
+            Type: Signature
+            Rule: "OR('RebelMSP.member')"
+         Writers:
+            Type: Signature
+            Rule: "OR('RebelMSP.member')"
+         Admins:
+            Type: Signature
+            Rule: "OR('RebelMSP.admin')"
+
+      # OrdererEndpoints is a list of all orderers this org runs which clients
+      # and peers may to connect to to push transactions and receive blocks respectively.
+      OrdererEndpoints:
+         - orderer0.cbody.com:7050
+         - orderer1.cbody.com:7150
+         - orderer2.cbody.com:7250
+         - orderer3.cbody.com:7350
+         - orderer4.cbody.com:7450
+
+      AnchorPeers:
+         # AnchorPeers defines the location of peers which can be used
+         # for cross org gossip communication.  Note, this value is only
+         # encoded in the genesis block in the Application section context
+         - Host: peer1.rebel.inc
+           Port: 7451

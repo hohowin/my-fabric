@@ -1,0 +1,32 @@
+version: '2'
+
+networks:
+    myplatform:
+
+services:
+
+    peer2.rebel.inc:
+        extends:
+            file: nodebase.yaml
+            service: peer
+        container_name: peer2.rebel.inc
+        environment:
+            - CORE_PEER_ID=peer2.rebel.inc
+            - CORE_PEER_ADDRESS=peer2.rebel.inc:7551
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:7551
+            - CORE_PEER_LOCALMSPID=RebelMSP
+            - CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/RebelMSP/peer2.rebel.inc/msp
+            - CORE_PEER_TLS_CERT_FILE=/var/artifacts/crypto-config/RebelMSP/peer2.rebel.inc/tls-msp/signcerts/cert.pem
+            - CORE_PEER_TLS_KEY_FILE=/var/artifacts/crypto-config/RebelMSP/peer2.rebel.inc/tls-msp/keystore/key.pem
+            - CORE_PEER_TLS_ROOTCERT_FILE=/var/artifacts/crypto-config/RebelMSP/peer2.rebel.inc/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+            - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.rebel.inc:7451
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.rebel.inc:7551
+            - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7552
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/RebelMSP/peer2.rebel.inc
+        volumes:
+            - /var/run:/host/var/run
+            - ../../../../artifacts/production/RebelMSP/peer2.rebel.inc:/var/artifacts/production
+            - ../../../../artifacts/crypto-config/RebelMSP/peer2.rebel.inc:/var/artifacts/crypto-config/RebelMSP/peer2.rebel.inc
+        ports:
+            - 7551:7551
+            - 7553:7553
