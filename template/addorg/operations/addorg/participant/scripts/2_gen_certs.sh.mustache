@@ -1,0 +1,8 @@
+cd ../config;
+docker-compose -f ca.yaml up -d
+sleep 5
+{{#orgs.peer}}
+docker exec {{ca.host}}{{network.host-delimiter}}{{domain}} sh -c "/setup/enroll_addorg.sh"
+{{/orgs.peer}}
+sleep 2
+docker-compose -f peernode1.yaml -f peernode2.yaml -f cli.yaml up -d
