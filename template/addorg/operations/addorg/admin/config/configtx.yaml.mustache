@@ -8,7 +8,7 @@
 ################################################################################
 Organizations:
 
-   {{#orgs.peer}}
+   {{#orgs.addorg}}
    - &{{name}}
 
       Name: {{name}}
@@ -43,4 +43,4 @@ Organizations:
          # encoded in the genesis block in the Application section context
          - Host: {{peers.anchor}}{{network.host-delimiter}}{{domain}}
            Port: {{peers.anchor-port}}
-   {{/orgs.peer}}
+   {{/orgs.addorg}}
