@@ -12,6 +12,10 @@ sudo cp  ${_CRYPTO_CONFIG_DIR}/{{{peers.endpoints.0.cert-path}}}/assets/ca/{{dom
 sudo cp  ${_CRYPTO_CONFIG_DIR}/{{{peers.endpoints.0.cert-path}}}/assets/tls-ca/tls-ca-cert.pem  ${_CRYPTO_CONFIG_DIR}/{{{msp-path}}}/tlscacerts
 {{/orgs.addorg}}
 
+# Generate Json
 cd ../config; 
 export FABRIC_CFG_PATH=${PWD}
-../../../../bin/configtxgen -printOrg {{orgs.addorg.name}} > {{orgs.addorg.name}}.json
+{{{artifacts.local}}}/../bin/configtxgen -printOrg {{orgs.addorg.name}} > {{orgs.addorg.name}}.json
+
+# Copy files to the container
+cp {{orgs.addorg.name}}.json {{{artifacts.local}}}
