@@ -19,3 +19,9 @@ export FABRIC_CFG_PATH=${PWD}
 
 # Copy files to the container
 cp {{orgs.addorg.name}}.json {{{artifacts.local}}}
+
+# Copy container script
+cp ../scripts/container/config_addorg*.sh {{{artifacts.local}}}
+
+# Add new org config block
+docker exec cli{{network.host-delimiter}}{{orgs.peer.0.domain}} sh -c "{{{artifacts.docker}}}/config_addorg_org1.sh"
