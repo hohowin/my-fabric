@@ -1,5 +1,5 @@
 # Copy container script
 cp container/join_channel_addorg.sh {{{artifacts.local}}}
 
-# Add new org config block
+# Join channel
 docker exec cli{{network.host-delimiter}}{{orgs.addorg.domain}} sh -c "{{{artifacts.docker}}}/join_channel_addorg.sh"
