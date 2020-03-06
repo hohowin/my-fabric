@@ -11,10 +11,12 @@ export CORE_PEER_MSPCONFIGPATH=/var/artifacts/crypto-config/PccHMSP/admin/msp
 # peer0 joining the channel
 export CORE_PEER_ADDRESS=peer0.pcch.net:7051
 peer channel join -b /var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/assets/genericchannel.block
+peer channel list
 peer channel getinfo -c genericchannel
 
 # peer1 joining the channel
 export CORE_PEER_ADDRESS=peer1.pcch.net:7151
 peer channel join -b /var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/assets/genericchannel.block
+peer channel list
 peer channel getinfo -c genericchannel
 

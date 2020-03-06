@@ -16,6 +16,7 @@ peer channel join -b zero.block
 sleep 10
 {{#peers.endpoints}}
 export CORE_PEER_ADDRESS={{-}}{{network.host-delimiter}}{{domain}}:{{port}}
+peer channel list
 peer channel getinfo -c {{network.peer-channels.0}}
 {{/peers.endpoints}}
 {{/orgs.addorg}}
