@@ -22,6 +22,6 @@ services:
         command: sh
         volumes:
             - {{{artifacts.local}}}:{{{artifacts.docker}}}
-            - ../scripts/container:/setup
-            - ../../../../chaincode:{{{artifacts.peers-working-dir}}}/chaincode
+            - {{{artifacts.local}}}/../scripts/container:/setup
+            - {{{artifacts.local}}}/../chaincode:{{{artifacts.peers-working-dir}}}/chaincode
     {{/orgs.addorg}}

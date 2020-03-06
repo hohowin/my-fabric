@@ -1,6 +1,6 @@
 {{#orgs.peer}}
 -- SPLIT WITH AWK --
-cd {{{artifacts.docker}}}
+cd {{{artifacts.docker}}}/addorg
 
 export CORE_PEER_MSPCONFIGPATH={{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{admin-cert-path}}}/msp
 export CORE_PEER_ADDRESS={{peers.endpoints.0.-}}{{network.host-delimiter}}{{domain}}:{{peers.endpoints.0.port}}
