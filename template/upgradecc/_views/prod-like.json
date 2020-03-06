@@ -1,0 +1,323 @@
+{
+    "network": {
+        "name": "myplatform",
+        "host-delimiter": ".",
+        "compose-project-name": "myproject",
+        "consortium": "Big4HK",
+        "orderer-channel": "ordererchannel",
+        "peer-channels": [
+            "genericchannel"
+        ],
+        "nodes": []
+    },
+    "artifacts": {
+        "local": "../../../artifacts",
+        "docker": "/var/artifacts",
+        "crypto": "crypto-config",
+        "production": "production",
+        "orderer-home": "orderer",
+        "peers-working-dir": "/opt/gopath/src/github.com/hyperledger/fabric"
+    },
+    "orgs": {
+        "tls": {
+            "domain": "cbody.com",
+            "ca": {
+                "host": "tls-ca",
+                "port": "6052",
+                "admin": "tls-ca-admin",
+                "adminpw": "tls-ca-adminPW",
+                "admin-cert-path": "CBodyMSP/tls/admin",
+                "server-home": "CBodyMSP/tls/server"
+            }
+        },
+        "orderer": {
+            "name": "CBody",
+            "id": "CBodyMSP",
+            "domain": "cbody.com",
+            "msp-path": "CBodyMSP/msp",
+            "admin-cert-path": "CBodyMSP/admin",
+            "admin-cert-user": "admin-cbody.com",
+            "admin-cert-pw": "sR7w9xWY",
+            "ca-server-cert-path": "CBodyMSP/ca/crypto",
+            "orderers": {
+                "type": "etcdraft",
+                "use-kafka": false,
+                "use-raft": true,
+                "batch-timeout": "2s",
+                "max-message-count": "500",
+                "absolute-max-bytes": "99 MB",
+                "preferred-max-bytes": "2 MB",
+                "max-channels": "10",
+                "genesis-profile": "SampleInsecureKafka",
+                "raft-tick-interval": "500ms",
+                "raft-election-tick": "10",
+                "raft-heartbeat-tick": "1",
+                "raft-max-inflight-blocks": "5",
+                "raft-snapshot-interval-size": "20 MB",
+                "endpoints": [
+                    {
+                        "-": "orderer0",
+                        "ext-port": "7050",
+                        "cert-path": "CBodyMSP/orderer0.cbody.com",
+                        "tls": {
+                            "user": "orderer0.cbody.com",
+                            "pw": "PCzEE5x2"
+                        },
+                        "cert": {
+                            "user": "orderer0.cbody.com",
+                            "pw": "DPCxKv8m"
+                        }
+                    },
+                    {
+                        "-": "orderer1",
+                        "ext-port": "7150",
+                        "cert-path": "CBodyMSP/orderer1.cbody.com",
+                        "tls": {
+                            "user": "orderer1.cbody.com",
+                            "pw": "E9Rd54w2"
+                        },
+                        "cert": {
+                            "user": "orderer1.cbody.com",
+                            "pw": "PCzEE5x2"
+                        }
+                    },
+                    {
+                        "-": "orderer2",
+                        "ext-port": "7250",
+                        "cert-path": "CBodyMSP/orderer2.cbody.com",
+                        "tls": {
+                            "user": "orderer2.cbody.com",
+                            "pw": "x4Y95QFC"
+                        },
+                        "cert": {
+                            "user": "orderer2.cbody.com",
+                            "pw": "T2ZNRe8x"
+                        }
+                    },
+                    {
+                        "-": "orderer3",
+                        "ext-port": "7350",
+                        "cert-path": "CBodyMSP/orderer3.cbody.com",
+                        "tls": {
+                            "user": "orderer3.cbody.com",
+                            "pw": "gf4ZKPSU"
+                        },
+                        "cert": {
+                            "user": "orderer3.cbody.com",
+                            "pw": "7B5qMkhg"
+                        }
+                    },
+                    {
+                        "-": "orderer4",
+                        "ext-port": "7450",
+                        "cert-path": "CBodyMSP/orderer4.cbody.com",
+                        "tls": {
+                            "user": "orderer4.cbody.com",
+                            "pw": "NhZM2pLZ"
+                        },
+                        "cert": {
+                            "user": "orderer4.cbody.com",
+                            "pw": "p8Maufjr"
+                        },
+                        "islast": true
+                    }
+                ]
+            },
+            "kafkas": {
+                "retry-shortinterval": "1s",
+                "retry-shorttotal": "30s",
+                "endpoints": [],
+                "ports": [
+                    "9092",
+                    "9093"
+                ]
+            },
+            "zookeepers": {
+                "endpoints": [],
+                "ports": [
+                    "2181",
+                    "2888",
+                    "3888"
+                ]
+            },
+            "ca": {
+                "host": "rca",
+                "port": "6053",
+                "admin": "rca-hktfp-admin",
+                "adminpw": "rca-hktfp-adminPW",
+                "admin-cert-path": "CBodyMSP/ca/admin",
+                "server-home": "CBodyMSP/ca/server"
+            }
+        },
+        "peer": [
+            {
+                "name": "PccH",
+                "script-naming": "org1",
+                "id": "PccHMSP",
+                "domain": "pcch.net",
+                "msp-path": "PccHMSP/msp",
+                "admin-cert-path": "PccHMSP/admin",
+                "admin-cert-user": "admin-pcch.net",
+                "admin-cert-pw": "Heym2rQK",
+                "ca-server-cert-path": "PccHMSP/ca/crypto",
+                "peers": {
+                    "anchor": "peer0",
+                    "anchor-port": "7051",
+                    "endpoints": [
+                        {
+                            "-": "peer0",
+                            "port": "7051",
+                            "chaincode-port": "7052",
+                            "eventhub-port": "7053",
+                            "cert-path": "PccHMSP/peer0.pcch.net",
+                            "tls": {
+                                "user": "peer0.pcch.net",
+                                "pw": "9d8vdCdk"
+                            },
+                            "cert": {
+                                "user": "peer0.pcch.net",
+                                "pw": "Tt4g3KLH"
+                            }
+                        },
+                        {
+                            "-": "peer1",
+                            "port": "7151",
+                            "chaincode-port": "7152",
+                            "eventhub-port": "7153",
+                            "cert-path": "PccHMSP/peer1.pcch.net",
+                            "tls": {
+                                "user": "peer1.pcch.net",
+                                "pw": "Trxg68PA"
+                            },
+                            "cert": {
+                                "user": "peer1.pcch.net",
+                                "pw": "C2npBNcf"
+                            },
+                            "islast": true
+                        }
+                    ]
+                },
+                "ca": {
+                    "host": "rca",
+                    "port": "6054",
+                    "admin": "rca-pcch-admin",
+                    "adminpw": "rca-pcch-adminPW",
+                    "admin-cert-path": "PccHMSP/ca/admin",
+                    "server-home": "PccHMSP/ca/server"
+                }
+            },
+            {
+                "name": "WakandaGov",
+                "script-naming": "org2",
+                "id": "WakandaGovMSP",
+                "domain": "gov.wakanda",
+                "msp-path": "WakandaGovMSP/msp",
+                "admin-cert-path": "WakandaGovMSP/admin",
+                "admin-cert-user": "admin-gov.wakanda",
+                "admin-cert-pw": "mEN6bpQW",
+                "ca-server-cert-path": "WakandaGovMSP/ca/crypto",
+                "peers": {
+                    "anchor": "peer0",
+                    "anchor-port": "7251",
+                    "endpoints": [
+                        {
+                            "-": "peer0",
+                            "port": "7251",
+                            "chaincode-port": "7252",
+                            "eventhub-port": "7253",
+                            "cert-path": "WakandaGovMSP/peer0.gov.wakanda",
+                            "tls": {
+                                "user": "peer0.gov.wakanda",
+                                "pw": "zkZDG96L"
+                            },
+                            "cert": {
+                                "user": "peer0.gov.wakanda",
+                                "pw": "4PBPEkwt"
+                            }
+                        },
+                        {
+                            "-": "peer1",
+                            "port": "7351",
+                            "chaincode-port": "7352",
+                            "eventhub-port": "7353",
+                            "cert-path": "WakandaGovMSP/peer1.gov.wakanda",
+                            "tls": {
+                                "user": "peer1.gov.wakanda",
+                                "pw": "4KnyJmwB"
+                            },
+                            "cert": {
+                                "user": "peer1.gov.wakanda",
+                                "pw": "Q528SdnZ"
+                            },
+                            "islast": true
+                        }
+                    ]
+                },
+                "ca": {
+                    "host": "rca",
+                    "port": "6055",
+                    "admin": "rca-wakanda-admin",
+                    "adminpw": "rca-wakanda-adminPW",
+                    "admin-cert-path": "WakandaGovMSP/ca/admin",
+                    "server-home": "WakandaGovMSP/ca/server"
+                }
+            },
+            {
+                "name": "Rebel",
+                "script-naming": "org3",
+                "id": "RebelMSP",
+                "domain": "rebel.inc",
+                "msp-path": "RebelMSP/msp",
+                "admin-cert-path": "RebelMSP/admin",
+                "admin-cert-user": "admin.rebel.inc",
+                "admin-cert-pw": "Heym2rQK",
+                "ca-server-cert-path": "RebelMSP/ca/crypto",
+                "peers": {
+                    "anchor": "peer1",
+                    "anchor-port": "7451",
+                    "endpoints": [
+                        {
+                            "-": "peer1",
+                            "port": "7451",
+                            "chaincode-port": "7452",
+                            "eventhub-port": "7453",
+                            "cert-path": "RebelMSP/peer1.rebel.inc",
+                            "tls": {
+                                "user": "peer1.rebel.inc",
+                                "pw": "9d8vdCdk"
+                            },
+                            "cert": {
+                                "user": "peer1.rebel.inc",
+                                "pw": "Tt4g3KLH"
+                            }
+                        },
+                        {
+                            "-": "peer2",
+                            "port": "7551",
+                            "chaincode-port": "7552",
+                            "eventhub-port": "7553",
+                            "cert-path": "RebelMSP/peer2.rebel.inc",
+                            "tls": {
+                                "user": "peer2.pcch.net",
+                                "pw": "Trxg68PA"
+                            },
+                            "cert": {
+                                "user": "peer2.pcch.net",
+                                "pw": "C2npBNcf"
+                            },
+                            "islast": true
+                        }
+                    ]
+                },
+                "ca": {
+                    "host": "rca",
+                    "port": "6056",
+                    "admin": "rca-rebel-admin",
+                    "adminpw": "rca-rebel-adminPW",
+                    "admin-cert-path": "RebelMSP/ca/admin",
+                    "server-home": "RebelMSP/ca/server"
+                }
+            }
+        ]
+    }
+}
