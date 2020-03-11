@@ -1,15 +1,11 @@
-cd {{{artifacts.local}}}/../chaincode/fabcar
-yarn install
-yarn build
-
-cd ../op
+# Upgrade OP ONLY
+cd {{{artifacts.local}}}/../chaincode/op
 yarn install
 yarn build
 
 # Install chaincode 2.0
 {{#orgs.peer}}
 {{#peers.endpoints}}
-docker exec cli{{network.host-delimiter}}{{domain}} sh -c "/setup/install_chaincode.sh {{domain}} {{-}} fabcar fabcar 2.0 {{port}} {{{admin-cert-path}}} {{{cert-path}}}"
 docker exec cli{{network.host-delimiter}}{{domain}} sh -c "/setup/install_chaincode.sh {{domain}} {{-}} op eventstore 2.0 {{port}} {{{admin-cert-path}}} {{{cert-path}}}"
 docker exec cli{{network.host-delimiter}}{{domain}} sh -c "/setup/install_chaincode.sh {{domain}} {{-}} op privatedata 2.0 {{port}} {{{admin-cert-path}}} {{{cert-path}}}"
 sleep 5
@@ -26,3 +22,11 @@ docker exec cli{{network.host-delimiter}}{{orgs.peer.0.domain}} sh -c "{{{artifa
 
 # Invoke chaincode
 docker exec cli{{network.host-delimiter}}{{orgs.peer.0.domain}} sh -c "/setup/invoke_chaincode_org1.sh"
+
+# Clean up old chaincode container
+docker rm -f $(docker ps -a | grep eventstore-1.0 | cut -d ' ' -f1)
+docker rm -f $(docker ps -a | grep privatedata-1.0 | cut -d ' ' -f1)
+
+# Clean up old chaincode images
+docker rmi -f $(docker images | grep eventstore-1.0 | awk '{print $3}')
+docker rmi -f $(docker images | grep privatedata-1.0 | awk '{print $3}')
