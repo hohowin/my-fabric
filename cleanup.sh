@@ -1,21 +1,9 @@
-# Import common.sh
-cd scripts
-. common.sh
-
-# export .env variables
-export $(grep -v '^#' ${_FABRIC_DIR}/.env | xargs)
-
 # Cleaup the environment
-docker rm -f logspout
-docker-compose -f ${_YAML_FILE} down --volumes
 docker rm -f $(docker ps -aq)
 docker volume prune -f
 docker network prune -f
 docker system prune -f
-sudo rm -rf ${_HYPERLEDGER_DIR}
-
-# Cleanup genesis block
-sudo rm ${_FABRIC_DIR}/genesis.block
+rm -rf config/../artifacts
 
 # Cleanup chaincode images
 docker rmi -f $(docker images | grep fabcar | awk '{print $3}')
@@ -29,5 +17,3 @@ rm -f ${_CHAINCODE_DIR}/fabcar/yarn.lock
 rm -rf ${_CHAINCODE_DIR}/op/dist
 rm -rf ${_CHAINCODE_DIR}/op/node_modules
 rm -f ${_CHAINCODE_DIR}/op/yarn.lock
-
-sleep 5

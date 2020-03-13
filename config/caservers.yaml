@@ -1,0 +1,79 @@
+version: '2'
+
+networks:
+    myplatform:
+
+services:
+
+    tls-ca.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: ca
+        container_name: tls-ca.cbody.com
+        restart: unless-stopped
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/CBodyMSP/tls/server
+            - FABRIC_CA_SERVER_CSR_CN=tls-ca.cbody.com
+            - FABRIC_CA_SERVER_CA_NAME=tls-ca.cbody.com
+        ports:
+            - 6052:6052
+        command: sh -c 'fabric-ca-server start -d -b tls-ca-admin:tls-ca-adminPW --cfg.affiliations.allowremove --cfg.identities.allowremove --port 6052'
+        volumes:
+            - ../scripts/container:/setup
+            - ../artifacts:/var/artifacts
+
+    rca.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: ca
+        container_name: rca.cbody.com
+        restart: unless-stopped
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/CBodyMSP/ca/server
+            - FABRIC_CA_SERVER_CSR_CN=rca.cbody.com
+            - FABRIC_CA_SERVER_CA_NAME=rca.cbody.com
+        ports:
+            - 6053:6053
+        command: sh -c 'fabric-ca-server start -d -b rca-hktfp-admin:rca-hktfp-adminPW --cfg.affiliations.allowremove --cfg.identities.allowremove --port 6053'
+        volumes:
+            - ../scripts/container:/setup
+            - ../artifacts:/var/artifacts
+
+    rca.pcch.net:
+        extends:
+            file: nodebase.yaml
+            service: ca
+        container_name: rca.pcch.net
+        restart: unless-stopped
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/PccHMSP/ca/server
+            - FABRIC_CA_SERVER_CSR_CN=rca.pcch.net
+            - FABRIC_CA_SERVER_CA_NAME=rca.pcch.net
+        ports:
+            - 6054:6054
+        command: sh -c 'fabric-ca-server start -d -b rca-pcch-admin:rca-pcch-adminPW --cfg.affiliations.allowremove  --cfg.identities.allowremove --port 6054'
+        volumes:
+            - ../scripts/container:/setup
+            - ../artifacts:/var/artifacts
+
+    rca.gov.wakanda:
+        extends:
+            file: nodebase.yaml
+            service: ca
+        container_name: rca.gov.wakanda
+        restart: unless-stopped
+        environment:
+            - HYPERLEDGER_VOL=/var/artifacts
+            - FABRIC_CA_SERVER_HOME=/var/artifacts/crypto-config/WakandaGovMSP/ca/server
+            - FABRIC_CA_SERVER_CSR_CN=rca.gov.wakanda
+            - FABRIC_CA_SERVER_CA_NAME=rca.gov.wakanda
+        ports:
+            - 6055:6055
+        command: sh -c 'fabric-ca-server start -d -b rca-wakanda-admin:rca-wakanda-adminPW --cfg.affiliations.allowremove  --cfg.identities.allowremove --port 6055'
+        volumes:
+            - ../scripts/container:/setup
+            - ../artifacts:/var/artifacts
+

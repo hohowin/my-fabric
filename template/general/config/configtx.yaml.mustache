@@ -19,7 +19,7 @@ Organizations:
       ID: {{orgs.orderer.id}}
 
       # MSPDir is the filesystem path which contains the MSP configuration
-      MSPDir: {{{artifacts.local}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.orderer.msp-path}}}
+      MSPDir: {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{orgs.orderer.msp-path}}}
 
       # Policies defines the set of policies at this level of the config tree
       # For organization policies, their canonical path is usually
@@ -47,7 +47,7 @@ Organizations:
       ID: {{id}}
 
       # MSPDir is the filesystem path which contains the MSP configuration
-      MSPDir: {{{artifacts.local}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{msp-path}}}
+      MSPDir: {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{msp-path}}}
 
       Policies:
          Readers:
@@ -255,8 +255,8 @@ Orderer: &OrdererDefaults
          {{#orgs.orderer.orderers.endpoints}}
          - Host: {{-}}{{network.host-delimiter}}{{orgs.orderer.domain}}
            Port: {{ext-port}}
-           ClientTLSCert: {{{artifacts.local}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/tls-msp/signcerts/cert.pem
-           ServerTLSCert: {{{artifacts.local}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/tls-msp/signcerts/cert.pem
+           ClientTLSCert: {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/tls-msp/signcerts/cert.pem
+           ServerTLSCert: {{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}{{{cert-path}}}/tls-msp/signcerts/cert.pem
          {{/orgs.orderer.orderers.endpoints}}
 
       # Options to be specified for all the etcd/raft nodes. The values here

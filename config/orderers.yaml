@@ -1,0 +1,132 @@
+version: '2'
+
+networks:
+    myplatform:
+
+services:
+
+    orderer0.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer0.cbody.com
+        restart: unless-stopped
+        environment:
+            - ORDERER_HOST=orderer0.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7050
+        volumes:
+            - ../artifacts/production/CBodyMSP/orderer0.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer0.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com
+        ports:
+            - 7050:7050
+
+    orderer1.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer1.cbody.com
+        restart: unless-stopped
+        environment:
+            - ORDERER_HOST=orderer1.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7150
+        volumes:
+            - ../artifacts/production/CBodyMSP/orderer1.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer1.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com
+        ports:
+            - 7150:7150
+
+    orderer2.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer2.cbody.com
+        restart: unless-stopped
+        environment:
+            - ORDERER_HOST=orderer2.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7250
+        volumes:
+            - ../artifacts/production/CBodyMSP/orderer2.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer2.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com
+        ports:
+            - 7250:7250
+
+    orderer3.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer3.cbody.com
+        restart: unless-stopped
+        environment:
+            - ORDERER_HOST=orderer3.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7350
+        volumes:
+            - ../artifacts/production/CBodyMSP/orderer3.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer3.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com
+        ports:
+            - 7350:7350
+
+    orderer4.cbody.com:
+        extends:
+            file: nodebase.yaml
+            service: orderer
+        container_name: orderer4.cbody.com
+        restart: unless-stopped
+        environment:
+            - ORDERER_HOST=orderer4.cbody.com
+            - ORDERER_HOME=/var/artifacts/orderer
+            - ORDERER_GENERAL_LOCALMSPID=CBodyMSP
+            - ORDERER_GENERAL_LOCALMSPDIR=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/msp
+            - ORDERER_GENERAL_TLS_CERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_TLS_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_GENESISFILE=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/genesis.block
+            - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
+            - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/keystore/key.pem
+            - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem]
+            - ORDERER_GENERAL_LISTENPORT=7450
+        volumes:
+            - ../artifacts/production/CBodyMSP/orderer4.cbody.com:/var/artifacts/production
+            - ../artifacts/crypto-config/CBodyMSP/orderer4.cbody.com:/var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com
+        ports:
+            - 7450:7450
+

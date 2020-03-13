@@ -19,7 +19,7 @@ Organizations:
       ID: CBodyMSP
 
       # MSPDir is the filesystem path which contains the MSP configuration
-      MSPDir: ../artifacts/crypto-config/CBodyMSP/msp
+      MSPDir: /var/artifacts/crypto-config/CBodyMSP/msp
 
       # Policies defines the set of policies at this level of the config tree
       # For organization policies, their canonical path is usually
@@ -46,7 +46,7 @@ Organizations:
       ID: PccHMSP
 
       # MSPDir is the filesystem path which contains the MSP configuration
-      MSPDir: ../artifacts/crypto-config/PccHMSP/msp
+      MSPDir: /var/artifacts/crypto-config/PccHMSP/msp
 
       Policies:
          Readers:
@@ -83,7 +83,7 @@ Organizations:
       ID: WakandaGovMSP
 
       # MSPDir is the filesystem path which contains the MSP configuration
-      MSPDir: ../artifacts/crypto-config/WakandaGovMSP/msp
+      MSPDir: /var/artifacts/crypto-config/WakandaGovMSP/msp
 
       Policies:
          Readers:
@@ -280,24 +280,24 @@ Orderer: &OrdererDefaults
       Consenters:
          - Host: orderer0.cbody.com
            Port: 7050
-           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
+           ClientTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/signcerts/cert.pem
          - Host: orderer1.cbody.com
            Port: 7150
-           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
+           ClientTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer1.cbody.com/tls-msp/signcerts/cert.pem
          - Host: orderer2.cbody.com
            Port: 7250
-           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
+           ClientTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer2.cbody.com/tls-msp/signcerts/cert.pem
          - Host: orderer3.cbody.com
            Port: 7350
-           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
+           ClientTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer3.cbody.com/tls-msp/signcerts/cert.pem
          - Host: orderer4.cbody.com
            Port: 7450
-           ClientTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
-           ServerTLSCert: ../artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
+           ClientTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
+           ServerTLSCert: /var/artifacts/crypto-config/CBodyMSP/orderer4.cbody.com/tls-msp/signcerts/cert.pem
 
       # Options to be specified for all the etcd/raft nodes. The values here
       # are the defaults for all new channels and can be modified on a
