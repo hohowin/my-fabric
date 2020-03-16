@@ -1,6 +1,6 @@
 import { values } from 'lodash';
-import { Commit, EventStore } from '..';
 import { StateList } from '../ledger-api';
+import { Commit, EventStore } from '..';
 
 const ctx: any = {
   stub: {
@@ -10,7 +10,8 @@ const ctx: any = {
     putState: jest.fn(),
     setEvent: jest.fn(),
     getStateByPartialCompositeKey: jest.fn()
-  }
+  },
+  clientIdentity: { getID: jest.fn() }
 };
 const context = {
   stateList: new StateList(ctx, 'entities'),
@@ -19,9 +20,9 @@ const context = {
 
 ctx.stub.createCompositeKey.mockResolvedValue('entities"en""entId""2019"');
 ctx.stub.putState.mockResolvedValue(Buffer.from(''));
-ctx.stub.setEvent.mockImplementation((name, args) =>
-  console.log(`Event sent: ${name}: ${args}`)
-);
+ctx.stub.setEvent.mockImplementation((name, args) => console.log(`Event sent: ${name}: ${args}`));
+ctx.clientIdentity.getID.mockImplementation(() => 'Org1MSP');
+
 const cc = new EventStore(context);
 const entityName = 'cc_test';
 const id = 'cc_01';
@@ -65,9 +66,9 @@ describe('Chaincode Tests', () => {
 
   it('should createCommit', async () =>
     cc
-      .createCommit(context, entityName, id, version, eventStr)
+      .createCommit(context, entityName, id, version, eventStr, commitId)
       .then<Commit>((response: any) => values(JSON.parse(response))[0])
-      .then(({ id, entityName, version, entityId, events }) => ({
+      .then(({ id, entityName, version, entityId }) => ({
         id,
         entityName,
         version,

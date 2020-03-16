@@ -1,38 +1,51 @@
 {
-  "name": "@espresso/chaincode",
-  "version": "0.2.0",
-  "description": "Event Store Chaincode for Hyperledger Fabric",
+  "name": "@fabric-es/chaincode",
+  "version": "0.5.14",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "description": "Event Store Chaincode for Hyperledger Fabric",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fabric-es/fabric-es.git"
+  },
+  "keywords": [
+    "hyperledger"
+  ],
+  "author": "Ross Tang",
+  "license": "BSD-3-Clause-Clear",
+  "homepage": "https://github.com/fabric-es/fabric-es",
+  "bugs": {
+    "url": "https://github.com/fabric-es/fabric-es/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "engines": {
     "node": "^8.10.0",
     "npm": ">=5"
   },
-  "private": true,
   "scripts": {
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "pretest": "npm run lint",
     "start": "fabric-chaincode-node start",
     "build": "rimraf dist && tsc",
+    "build:prod": "rimraf dist && tsc -p ./tsconfig.prod.json",
     "build:watch": "tsc -w",
     "prepublishOnly": "npm run build",
-    "test": "jest",
-    "test:public-integration": "jest public.integration.test",
-    "test:public-unit": "jest public.unit.test",
+    "network-test": "jest network.test",
+    "unit-test": "jest public.unit.test",
+    "unit-test:fab": "yarn unit-test && yarn network-test",
     "test:private": "jest private.integration.test",
-    "test:ngac-policy-engine-unit-test": "jest ngac.pe.unit.test",
-    "test:ngac-crud-unit-test": "jest ngac.crud.unit.test",
-    "test:ngac-consolidated-unit-test": "jest ngac.consolidated.unit.test",
-    "test:ngac-crud-integration-test": "jest ngac.crud.integration.test",
-    "test:policy.unit.test": "jest hasList.policy.unit.test"
+    "test:ngac-policy-engine-unit-test": "(broke) jest ngac.pe.unit.test",
+    "test:ngac-crud-unit-test": "(broke) jest ngac.crud.unit.test",
+    "test:ngac-consolidated-unit-test": "(broke) jest ngac.consolidated.unit.test",
+    "test:ngac-crud-integration-test": "(broke) jest ngac.crud.integration.test",
+    "test:policy.unit.test": "(broke) jest hasList.policy.unit.test",
+    "lint": "eslint --max-warnings 10 'src/**/*.{js,ts}'",
+    "publish:gh:fabric-es": "npm publish"
   },
   "engineStrict": true,
-  "author": "Ross Tang",
-  "license": "Apache-2.0",
   "dependencies": {
     "@types/bytebuffer": "^5.0.40",
     "bcrypt": "^3.0.7",
-    "child-process-promise": "^2.2.1",
     "fabric-contract-api": "~1.4.2",
     "fabric-shim": "~1.4.2",
     "lodash": "^4.17.15",
@@ -43,14 +56,13 @@
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.136",
     "@types/node": "^8.10.54",
+    "child-process-promise": "^2.2.1",
+    "execa": "3.4.0",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
-    "tslint": "^5.20.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.7.2"
   }
 }
