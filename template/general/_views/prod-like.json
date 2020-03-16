@@ -18,6 +18,23 @@
         "orderer-home": "orderer",
         "peers-working-dir": "/opt/gopath/src/github.com/hyperledger/fabric"
     },
+    "chaincodes": [
+        {
+            "ccname": "eventstore",
+            "ccpath": "op",
+            "ccver": "1.0",
+            "policy": "OR ('PccHMSP.member' ,'WakandaGovMSP.member')",
+            "instantiate": "{\"Args\":[\"eventstore:instantiate\"]}"
+        },
+        {
+            "ccname": "privatedata",
+            "ccpath": "op",
+            "ccver": "1.0",
+            "policy": "OR ('PccHMSP.member' ,'WakandaGovMSP.member')",
+            "instantiate": "{\"Args\":[\"privatedata:instantiate\"]}",
+            "collection": "--collections-config \/opt\/gopath\/src\/github.com\/hyperledger\/fabric\/chaincode\/op\/collections.json"
+        }
+    ],
     "orgs": {
         "tls": {
             "domain": "cbody.com",

@@ -20,10 +20,10 @@ print() {
   CODE=$2
 
   if [ $2 -ne 0 ] ; then
-    printf "${RED}${MESSAGE} failed${NC}\n"
+    printf "${RED}[`date +"%Y-%m-%d %H:%M:%S"`] ${MESSAGE} failed${NC}\n"
     exit -1
   fi
-  printf "${GREEN}Complete ${MESSAGE}${NC}\n\n"
+  printf "${GREEN}[`date +"%Y-%m-%d %H:%M:%S"`] Complete ${MESSAGE}${NC}\n\n"
   sleep 1
 }
 
@@ -32,6 +32,7 @@ subject() {
     echo ''
     echo '####'
     echo '#### ' $1
+#    echo '#### '[`date +"%Y-%m-%d %H:%M:%S"`]
     echo '####'
     echo ''
     printf "${NC}"
