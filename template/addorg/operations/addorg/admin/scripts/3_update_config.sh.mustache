@@ -26,5 +26,5 @@ cp container/config_addorg*.sh {{{artifacts.local}}}/addorg
 # NOTE: ONLY SIGNATURES FROM MAJORITY OF ORGANIZATIONS ARE NEEDED
 {{#orgs.peer}}
 docker exec cli sh -c "{{{artifacts.docker}}}/addorg/config_addorg_{{script-naming}}.sh"
-sleep 2
+sleep 4
 {{/orgs.peer}}
