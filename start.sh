@@ -32,7 +32,6 @@ subject() {
     echo ''
     echo '####'
     echo '#### ' $1
-#    echo '#### '[`date +"%Y-%m-%d %H:%M:%S"`]
     echo '####'
     echo ''
     printf "${NC}"

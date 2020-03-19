@@ -3,7 +3,7 @@ name: myproject_myplatform-WakandaGov
 version: 1.0.0
 
 client:
-  organization: WakandaGov
+  organization: WakandaGovMSP
   credentialStore:
     path: ./assets/client-certs/hfc-kvs/gov.wakanda
     cryptoStore:
@@ -14,7 +14,7 @@ client:
         endorser: '300'
 
 channels:
-  eventstore:
+  genericchannel:
     orderers:
       - orderer0.cbody.com
     peers:
@@ -40,9 +40,9 @@ organizations:
     certificateAuthorities:
       - rca.gov.wakanda
     adminPrivateKey:
-      path: ../../network2/config/../artifacts/crypto-config/WakandaGovMSP/admin/msp/keystore/key.pem
+      path: /var/artifacts/crypto-config/WakandaGovMSP/admin/msp/keystore/key.pem
     signedCert:
-      path: ../../network2/config/../artifacts/crypto-config/WakandaGovMSP/admin/msp/signcerts/cert.pem
+      path: /var/artifacts/crypto-config/WakandaGovMSP/admin/msp/signcerts/cert.pem
 
 orderers:
   orderer0.cbody.com:
@@ -51,21 +51,21 @@ orderers:
       ssl-target-name-override: orderer0.cbody.com
     #      grpc-max-send-message-length: 4000
     tlsCACerts:
-      path: ../../network2/config/../artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+      path: /var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
 peers:
   peer0.gov.wakanda:
     url: grpcs://localhost:7251
     eventUrl: grpcs://localhost:7253
     tlsCACerts:
-      path: ../../network2/config/../artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+      path: /var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
     grpcOptions:
       ssl-target-name-override: peer0.gov.wakanda
   peer1.gov.wakanda:
     url: grpcs://localhost:7351
     eventUrl: grpcs://localhost:7353
     tlsCACerts:
-      path: ../../network2/config/../artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+      path: /var/artifacts/crypto-config/WakandaGovMSP/peer1.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
     grpcOptions:
       ssl-target-name-override: peer1.gov.wakanda
 
@@ -74,7 +74,7 @@ certificateAuthorities:
     url: https://localhost:6055
     caName: rca.gov.wakanda
     tlsCACerts:
-      path: ../../network2/config/../artifacts/crypto-config/WakandaGovMSP/msp/tlscacerts/tls-ca-cert.pem
+      path: /var/artifacts/crypto-config/WakandaGovMSP/peer0.gov.wakanda/assets/tls-ca/tls-ca-cert.pem
     registrar:
       - enrollId: rca-wakanda-admin
         enrollSecret: rca-wakanda-adminPW

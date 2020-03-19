@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##############
 # Environments
 ##############
@@ -6,7 +8,6 @@ export RED='\033[0;31m'
 export GREEN='\033[0;32m'
 export YELLOW='\033[0;33m'
 export NC='\033[0m'
-
 export DOCKER_CRYPTO=/var/artifacts/crypto-config/
 
 ##############
@@ -231,6 +232,8 @@ docker exec \
     -c '{"Args":["createCommit", "dev_entity", "ent_dev_org1", "0","[{\"type\":\"mon\"}]", "ent_dev_org1"]}' \
     --tls --cafile ${DOCKER_CRYPTO}PccHMSP/peer0.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
+print "invoke event store on PccH peer0" $?
+
 # Query event store
 docker exec \
   -e "CORE_PEER_ADDRESS=peer0.pcch.net:7051" \
@@ -243,8 +246,11 @@ docker exec \
     -c '{"Args":["eventstore:queryByEntityName","dev_entity"]}' \
     --tls --cafile ${DOCKER_CRYPTO}PccHMSP/peer0.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
+print "query event store on PccH peer0" $?
+
 # Invoke private data
-export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n)
+export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n);
+
 docker exec \
   -e "CORE_PEER_ADDRESS=peer0.pcch.net:7051" \
   -e "CORE_PEER_LOCALMSPID=PccHMSP" \
@@ -257,7 +263,9 @@ docker exec \
     --transient "{\"eventstr\":\"$COMMIT\"}" \
     --tls --cafile ${DOCKER_CRYPTO}PccHMSP/peer0.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
-# Query event store
+ print "invoke private data on PccH peer0" $?
+
+# Query private data
 docker exec \
   -e "CORE_PEER_ADDRESS=peer0.pcch.net:7051" \
   -e "CORE_PEER_LOCALMSPID=PccHMSP" \
@@ -269,7 +277,7 @@ docker exec \
     -c '{"Args":["privatedata:queryByEntityName","PccHPrivateDetails","private_entityName"]}' \
     --tls --cafile ${DOCKER_CRYPTO}PccHMSP/peer0.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
-print "invoke on PccH peer0" $?
+print "query private data on PccH peer0" $?
 sleep 3
 
 # Invoke event store
@@ -284,6 +292,8 @@ docker exec \
     -c '{"Args":["createCommit", "dev_entity", "ent_dev_org1", "0","[{\"type\":\"mon\"}]", "ent_dev_org1"]}' \
     --tls --cafile ${DOCKER_CRYPTO}PccHMSP/peer1.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
+print "invoke event store on PccH peer1" $?
+
 # Query event store
 docker exec \
   -e "CORE_PEER_ADDRESS=peer1.pcch.net:7151" \
@@ -296,8 +306,11 @@ docker exec \
     -c '{"Args":["eventstore:queryByEntityName","dev_entity"]}' \
     --tls --cafile ${DOCKER_CRYPTO}PccHMSP/peer1.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
+print "query event store on PccH peer1" $?
+
 # Invoke private data
-export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n)
+export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n);
+
 docker exec \
   -e "CORE_PEER_ADDRESS=peer1.pcch.net:7151" \
   -e "CORE_PEER_LOCALMSPID=PccHMSP" \
@@ -310,7 +323,9 @@ docker exec \
     --transient "{\"eventstr\":\"$COMMIT\"}" \
     --tls --cafile ${DOCKER_CRYPTO}PccHMSP/peer1.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
-# Query event store
+ print "invoke private data on PccH peer1" $?
+
+# Query private data
 docker exec \
   -e "CORE_PEER_ADDRESS=peer1.pcch.net:7151" \
   -e "CORE_PEER_LOCALMSPID=PccHMSP" \
@@ -322,7 +337,7 @@ docker exec \
     -c '{"Args":["privatedata:queryByEntityName","PccHPrivateDetails","private_entityName"]}' \
     --tls --cafile ${DOCKER_CRYPTO}PccHMSP/peer1.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
-print "invoke on PccH peer1" $?
+print "query private data on PccH peer1" $?
 sleep 3
 
 # Invoke event store
@@ -337,6 +352,8 @@ docker exec \
     -c '{"Args":["createCommit", "dev_entity", "ent_dev_org2", "0","[{\"type\":\"mon\"}]", "ent_dev_org2"]}' \
     --tls --cafile ${DOCKER_CRYPTO}WakandaGovMSP/peer0.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
+print "invoke event store on WakandaGov peer0" $?
+
 # Query event store
 docker exec \
   -e "CORE_PEER_ADDRESS=peer0.gov.wakanda:7251" \
@@ -349,8 +366,11 @@ docker exec \
     -c '{"Args":["eventstore:queryByEntityName","dev_entity"]}' \
     --tls --cafile ${DOCKER_CRYPTO}WakandaGovMSP/peer0.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
+print "query event store on WakandaGov peer0" $?
+
 # Invoke private data
-export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n)
+export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n);
+
 docker exec \
   -e "CORE_PEER_ADDRESS=peer0.gov.wakanda:7251" \
   -e "CORE_PEER_LOCALMSPID=WakandaGovMSP" \
@@ -363,7 +383,9 @@ docker exec \
     --transient "{\"eventstr\":\"$COMMIT\"}" \
     --tls --cafile ${DOCKER_CRYPTO}WakandaGovMSP/peer0.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
-# Query event store
+ print "invoke private data on WakandaGov peer0" $?
+
+# Query private data
 docker exec \
   -e "CORE_PEER_ADDRESS=peer0.gov.wakanda:7251" \
   -e "CORE_PEER_LOCALMSPID=WakandaGovMSP" \
@@ -375,7 +397,7 @@ docker exec \
     -c '{"Args":["privatedata:queryByEntityName","WakandaGovPrivateDetails","private_entityName"]}' \
     --tls --cafile ${DOCKER_CRYPTO}WakandaGovMSP/peer0.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
-print "invoke on WakandaGov peer0" $?
+print "query private data on WakandaGov peer0" $?
 sleep 3
 
 # Invoke event store
@@ -390,6 +412,8 @@ docker exec \
     -c '{"Args":["createCommit", "dev_entity", "ent_dev_org2", "0","[{\"type\":\"mon\"}]", "ent_dev_org2"]}' \
     --tls --cafile ${DOCKER_CRYPTO}WakandaGovMSP/peer1.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
+print "invoke event store on WakandaGov peer1" $?
+
 # Query event store
 docker exec \
   -e "CORE_PEER_ADDRESS=peer1.gov.wakanda:7351" \
@@ -402,8 +426,11 @@ docker exec \
     -c '{"Args":["eventstore:queryByEntityName","dev_entity"]}' \
     --tls --cafile ${DOCKER_CRYPTO}WakandaGovMSP/peer1.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
+print "query event store on WakandaGov peer1" $?
+
 # Invoke private data
-export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n)
+export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n);
+
 docker exec \
   -e "CORE_PEER_ADDRESS=peer1.gov.wakanda:7351" \
   -e "CORE_PEER_LOCALMSPID=WakandaGovMSP" \
@@ -416,7 +443,9 @@ docker exec \
     --transient "{\"eventstr\":\"$COMMIT\"}" \
     --tls --cafile ${DOCKER_CRYPTO}WakandaGovMSP/peer1.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
-# Query event store
+ print "invoke private data on WakandaGov peer1" $?
+
+# Query private data
 docker exec \
   -e "CORE_PEER_ADDRESS=peer1.gov.wakanda:7351" \
   -e "CORE_PEER_LOCALMSPID=WakandaGovMSP" \
@@ -428,6 +457,10 @@ docker exec \
     -c '{"Args":["privatedata:queryByEntityName","WakandaGovPrivateDetails","private_entityName"]}' \
     --tls --cafile ${DOCKER_CRYPTO}WakandaGovMSP/peer1.gov.wakanda/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
-print "invoke on WakandaGov peer1" $?
+print "query private data on WakandaGov peer1" $?
 sleep 3
 
+
+#############################
+
+subject "Install CC Completed!"

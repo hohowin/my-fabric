@@ -3,7 +3,7 @@ name: myproject_myplatform-PccH
 version: 1.0.0
 
 client:
-  organization: PccH
+  organization: PccHMSP
   credentialStore:
     path: ./assets/client-certs/hfc-kvs/pcch.net
     cryptoStore:
@@ -14,7 +14,7 @@ client:
         endorser: '300'
 
 channels:
-  eventstore:
+  genericchannel:
     orderers:
       - orderer0.cbody.com
     peers:
@@ -40,9 +40,9 @@ organizations:
     certificateAuthorities:
       - rca.pcch.net
     adminPrivateKey:
-      path: ../../network2/config/../artifacts/crypto-config/PccHMSP/admin/msp/keystore/key.pem
+      path: /var/artifacts/crypto-config/PccHMSP/admin/msp/keystore/key.pem
     signedCert:
-      path: ../../network2/config/../artifacts/crypto-config/PccHMSP/admin/msp/signcerts/cert.pem
+      path: /var/artifacts/crypto-config/PccHMSP/admin/msp/signcerts/cert.pem
 
 orderers:
   orderer0.cbody.com:
@@ -51,21 +51,21 @@ orderers:
       ssl-target-name-override: orderer0.cbody.com
     #      grpc-max-send-message-length: 4000
     tlsCACerts:
-      path: ../../network2/config/../artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+      path: /var/artifacts/crypto-config/CBodyMSP/orderer0.cbody.com/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
 
 peers:
   peer0.pcch.net:
     url: grpcs://localhost:7051
     eventUrl: grpcs://localhost:7053
     tlsCACerts:
-      path: ../../network2/config/../artifacts/crypto-config/PccHMSP/peer0.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+      path: /var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
     grpcOptions:
       ssl-target-name-override: peer0.pcch.net
   peer1.pcch.net:
     url: grpcs://localhost:7151
     eventUrl: grpcs://localhost:7153
     tlsCACerts:
-      path: ../../network2/config/../artifacts/crypto-config/PccHMSP/peer1.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
+      path: /var/artifacts/crypto-config/PccHMSP/peer1.pcch.net/tls-msp/tlscacerts/tls-0-0-0-0-6052.pem
     grpcOptions:
       ssl-target-name-override: peer1.pcch.net
 
@@ -74,7 +74,7 @@ certificateAuthorities:
     url: https://localhost:6054
     caName: rca.pcch.net
     tlsCACerts:
-      path: ../../network2/config/../artifacts/crypto-config/PccHMSP/msp/tlscacerts/tls-ca-cert.pem
+      path: /var/artifacts/crypto-config/PccHMSP/peer0.pcch.net/assets/tls-ca/tls-ca-cert.pem
     registrar:
       - enrollId: rca-pcch-admin
         enrollSecret: rca-pcch-adminPW
