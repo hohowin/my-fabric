@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##############
 # Environments
 ##############
@@ -6,7 +8,6 @@ export RED='\033[0;31m'
 export GREEN='\033[0;32m'
 export YELLOW='\033[0;33m'
 export NC='\033[0m'
-
 export DOCKER_CRYPTO={{{artifacts.docker}}}/{{{artifacts.crypto}}}{{#artifacts.crypto}}/{{/artifacts.crypto}}
 
 ##############
@@ -134,6 +135,8 @@ docker exec \
     -c '{"Args":["createCommit", "dev_entity", "ent_dev_{{script-naming}}", "0","[{\"type\":\"mon\"}]", "ent_dev_{{script-naming}}"]}' \
     --tls --cafile ${DOCKER_CRYPTO}{{{cert-path}}}/tls-msp/tlscacerts/tls-0-0-0-0-{{orgs.tls.ca.port}}.pem
 
+print "invoke event store on {{name}} {{-}}" $?
+
 # Query event store
 docker exec \
   -e "CORE_PEER_ADDRESS={{-}}{{network.host-delimiter}}{{domain}}:{{port}}" \
@@ -146,8 +149,11 @@ docker exec \
     -c '{"Args":["eventstore:queryByEntityName","dev_entity"]}' \
     --tls --cafile ${DOCKER_CRYPTO}{{{cert-path}}}/tls-msp/tlscacerts/tls-0-0-0-0-{{orgs.tls.ca.port}}.pem
 
+print "query event store on {{name}} {{-}}" $?
+
 # Invoke private data
-export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n)
+export COMMIT=$(echo -n "{\"eventString\":\"[]\"}" | base64 | tr -d \\n);
+
 docker exec \
   -e "CORE_PEER_ADDRESS={{-}}{{network.host-delimiter}}{{domain}}:{{port}}" \
   -e "CORE_PEER_LOCALMSPID={{id}}" \
@@ -160,7 +166,9 @@ docker exec \
     --transient "{\"eventstr\":\"$COMMIT\"}" \
     --tls --cafile ${DOCKER_CRYPTO}{{{cert-path}}}/tls-msp/tlscacerts/tls-0-0-0-0-{{orgs.tls.ca.port}}.pem
 
-# Query event store
+ print "invoke private data on {{name}} {{-}}" $?
+
+# Query private data
 docker exec \
   -e "CORE_PEER_ADDRESS={{-}}{{network.host-delimiter}}{{domain}}:{{port}}" \
   -e "CORE_PEER_LOCALMSPID={{id}}" \
@@ -172,8 +180,12 @@ docker exec \
     -c '{"Args":["privatedata:queryByEntityName","{{name}}PrivateDetails","private_entityName"]}' \
     --tls --cafile ${DOCKER_CRYPTO}{{{cert-path}}}/tls-msp/tlscacerts/tls-0-0-0-0-{{orgs.tls.ca.port}}.pem
 
-print "invoke on {{name}} {{-}}" $?
+print "query private data on {{name}} {{-}}" $?
 sleep 3
 
 {{/peers.endpoints}}
 {{/orgs.peer}}
+
+#############################
+
+subject "Install CC Completed!"
