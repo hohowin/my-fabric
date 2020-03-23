@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const eventstore_1 = require("./contract/eventstore");
+exports.EventStore = eventstore_1.EventStore;
+const privateData_1 = require("./contract/privateData");
+const ledger_api_1 = require("./ledger-api");
+exports.Commit = ledger_api_1.Commit;
+exports.createInstance = ledger_api_1.createInstance;
+const types_1 = require("./ngac/types");
+exports.CONTEXT = types_1.CONTEXT;
+exports.NAMESPACE = types_1.NAMESPACE;
+exports.RESOURCE = types_1.RESOURCE;
+exports.contracts = [eventstore_1.EventStore, privateData_1.PrivateData];
