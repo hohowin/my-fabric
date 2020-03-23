@@ -49,10 +49,11 @@ yarn install
 yarn build
 print "build fabcar" $?
 
-cd ../op
-yarn install
-yarn build
-print "build op" $?
+# Dist is committed. Build is no longer required
+#cd ../op
+#yarn install
+#yarn build
+#print "build op" $?
 
 #############################
 #
