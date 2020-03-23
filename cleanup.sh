@@ -22,6 +22,3 @@ export _CHAINCODE_DIR=chaincode
 rm -rf ${_CHAINCODE_DIR}/fabcar/dist
 rm -rf ${_CHAINCODE_DIR}/fabcar/node_modules
 rm -f ${_CHAINCODE_DIR}/fabcar/yarn.lock
-rm -rf ${_CHAINCODE_DIR}/op/dist
-rm -rf ${_CHAINCODE_DIR}/op/node_modules
-rm -f ${_CHAINCODE_DIR}/op/yarn.lock
